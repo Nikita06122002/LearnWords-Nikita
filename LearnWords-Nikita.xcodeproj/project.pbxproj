@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CA133022AC407BF00326941 /* UIMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA133012AC407BF00326941 /* UIMainViewController.swift */; };
+		5CA133052AC40FD100326941 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA133042AC40FD100326941 /* MainTableViewCell.swift */; };
+		5CA133082AC4141200326941 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA133072AC4141200326941 /* Word.swift */; };
+		5CA1330A2AC4148800326941 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA133092AC4148800326941 /* NewWordViewController.swift */; };
+		5CA1330D2AC41AC100326941 /* UIView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1330C2AC41AC100326941 /* UIView-Ext.swift */; };
+		5CA1330F2AC41BFD00326941 /* UIStackView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1330E2AC41BFD00326941 /* UIStackView-Ext.swift */; };
 		FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0C2AC072E200293B99 /* AppDelegate.swift */; };
 		FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0E2AC072E200293B99 /* SceneDelegate.swift */; };
 		FA692A112AC072E200293B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A102AC072E200293B99 /* ViewController.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CA133012AC407BF00326941 /* UIMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainViewController.swift; sourceTree = "<group>"; };
+		5CA133042AC40FD100326941 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		5CA133072AC4141200326941 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		5CA133092AC4148800326941 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
+		5CA1330C2AC41AC100326941 /* UIView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Ext.swift"; sourceTree = "<group>"; };
+		5CA1330E2AC41BFD00326941 /* UIStackView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-Ext.swift"; sourceTree = "<group>"; };
 		FA692A092AC072E200293B99 /* LearnWords-Nikita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LearnWords-Nikita.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA692A0C2AC072E200293B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA692A0E2AC072E200293B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +49,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CA132FD2AC4030400326941 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A0C2AC072E200293B99 /* AppDelegate.swift */,
+				FA692A0E2AC072E200293B99 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		5CA132FE2AC4038B00326941 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A1A2AC072E300293B99 /* Info.plist */,
+				FA692A152AC072E300293B99 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		5CA132FF2AC403A000326941 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A172AC072E300293B99 /* LaunchScreen.storyboard */,
+				FA692A122AC072E200293B99 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5CA133002AC4045500326941 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CA133012AC407BF00326941 /* UIMainViewController.swift */,
+				5CA133092AC4148800326941 /* NewWordViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5CA133032AC40FAF00326941 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5CA133042AC40FD100326941 /* MainTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5CA133062AC413FE00326941 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CA133072AC4141200326941 /* Word.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5CA1330B2AC41A8200326941 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5CA1330C2AC41AC100326941 /* UIView-Ext.swift */,
+				5CA1330E2AC41BFD00326941 /* UIStackView-Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FA692A002AC072E200293B99 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +129,14 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
-				FA692A0C2AC072E200293B99 /* AppDelegate.swift */,
-				FA692A0E2AC072E200293B99 /* SceneDelegate.swift */,
+				5CA1330B2AC41A8200326941 /* Extension */,
+				5CA133062AC413FE00326941 /* Model */,
+				5CA133032AC40FAF00326941 /* Cells */,
+				5CA133002AC4045500326941 /* Controllers */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
-				FA692A122AC072E200293B99 /* Main.storyboard */,
-				FA692A152AC072E300293B99 /* Assets.xcassets */,
-				FA692A172AC072E300293B99 /* LaunchScreen.storyboard */,
-				FA692A1A2AC072E300293B99 /* Info.plist */,
+				5CA132FE2AC4038B00326941 /* Support */,
+				5CA132FD2AC4030400326941 /* AppDelegate */,
+				5CA132FF2AC403A000326941 /* Storyboard */,
 			);
 			path = "LearnWords-Nikita";
 			sourceTree = "<group>";
@@ -140,7 +214,13 @@
 			files = (
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
+				5CA1330D2AC41AC100326941 /* UIView-Ext.swift in Sources */,
 				FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */,
+				5CA133022AC407BF00326941 /* UIMainViewController.swift in Sources */,
+				5CA1330A2AC4148800326941 /* NewWordViewController.swift in Sources */,
+				5CA1330F2AC41BFD00326941 /* UIStackView-Ext.swift in Sources */,
+				5CA133052AC40FD100326941 /* MainTableViewCell.swift in Sources */,
+				5CA133082AC4141200326941 /* Word.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LearnWords-Nikita/Info.plist";
+				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -323,7 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LearnWords-Nikita/Info.plist";
+				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

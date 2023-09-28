@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7ag-Wm-8wk">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LearnWords_Nikita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moc-j9-a2W">
+                                <rect key="frame" x="75" y="70" width="251" height="50"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2hY-dQ-5KD"/>
+                                </constraints>
+                                <string key="text">Label LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-f0-K5i">
+                                <rect key="frame" x="20" y="170" width="100" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="WY2-2p-TvY"/>
+                                    <constraint firstAttribute="width" constant="100" id="cvz-dP-z73"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="tapButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nhb-2K-mmk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="moc-j9-a2W" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="4xw-fJ-o5d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="moc-j9-a2W" secondAttribute="trailing" constant="67" id="X8t-uj-2cr"/>
+                            <constraint firstItem="do5-f0-K5i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aTd-G6-CyS"/>
+                            <constraint firstItem="do5-f0-K5i" firstAttribute="top" secondItem="moc-j9-a2W" secondAttribute="bottom" constant="50" id="dfN-dI-He9"/>
+                            <constraint firstItem="moc-j9-a2W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="er0-sd-js6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="do5-f0-K5i" secondAttribute="bottom" constant="100" id="giA-2O-IbS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="moc-j9-a2W" id="7Ab-kv-FyB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821" y="-8"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="1qB-92-n94">
+            <objects>
+                <viewController id="HdQ-Ya-SqX" customClass="UIMainViewController" customModule="LearnWords_Nikita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rxK-Ff-2fS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2nv-ao-lk1">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="106" id="A2i-jK-LDc" customClass="MainTableViewCell" customModule="LearnWords_Nikita" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="106"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A2i-jK-LDc" id="GDc-Fo-gAP">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="106"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-ZW-G8B">
+                                                    <rect key="frame" x="16.000000000000004" y="15" width="42.333333333333343" height="64"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-sr-jys">
+                                                    <rect key="frame" x="16" y="83" width="34" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="OvD-Fb-0Ed"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IH9-oJ-mKd">
+                                                    <rect key="frame" x="335" y="41" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="eAA-bg-t6A"/>
+                                                        <constraint firstAttribute="width" constant="24" id="rk9-gM-whv"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Button">
+                                                        <imageReference key="image" image="play.circle" catalog="system" symbolScale="large"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="IH9-oJ-mKd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S3u-sr-jys" secondAttribute="trailing" constant="10" id="2QV-Xw-YFJ"/>
+                                                <constraint firstItem="S3u-sr-jys" firstAttribute="top" secondItem="IfX-ZW-G8B" secondAttribute="bottom" constant="4" id="CN9-kr-Hq8"/>
+                                                <constraint firstAttribute="bottom" secondItem="S3u-sr-jys" secondAttribute="bottom" constant="2" id="GC8-HT-eVH"/>
+                                                <constraint firstItem="IfX-ZW-G8B" firstAttribute="leading" secondItem="GDc-Fo-gAP" secondAttribute="leading" constant="16" id="Qza-GW-2go"/>
+                                                <constraint firstItem="S3u-sr-jys" firstAttribute="leading" secondItem="GDc-Fo-gAP" secondAttribute="leading" constant="16" id="UVd-r7-CuB"/>
+                                                <constraint firstItem="IfX-ZW-G8B" firstAttribute="top" secondItem="GDc-Fo-gAP" secondAttribute="top" constant="15" id="mjw-fA-6MF"/>
+                                                <constraint firstAttribute="trailing" secondItem="IH9-oJ-mKd" secondAttribute="trailing" constant="34" id="nVA-RE-hSW"/>
+                                                <constraint firstItem="IH9-oJ-mKd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IfX-ZW-G8B" secondAttribute="trailing" constant="10" id="uja-Tt-Wz8"/>
+                                                <constraint firstItem="IH9-oJ-mKd" firstAttribute="centerY" secondItem="GDc-Fo-gAP" secondAttribute="centerY" id="xi2-1a-Cqu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playButton" destination="IH9-oJ-mKd" id="lGB-qV-NNg"/>
+                                            <outlet property="titleLabel" destination="IfX-ZW-G8B" id="JYd-8N-vv6"/>
+                                            <outlet property="translateLabel" destination="S3u-sr-jys" id="La9-5S-J6Q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="m7g-hI-VCO"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m7g-hI-VCO" firstAttribute="trailing" secondItem="2nv-ao-lk1" secondAttribute="trailing" id="19q-Kt-Bnd"/>
+                            <constraint firstItem="2nv-ao-lk1" firstAttribute="leading" secondItem="m7g-hI-VCO" secondAttribute="leading" id="7Eb-sp-gtp"/>
+                            <constraint firstItem="m7g-hI-VCO" firstAttribute="bottom" secondItem="2nv-ao-lk1" secondAttribute="bottom" id="IPQ-hi-4E9"/>
+                            <constraint firstItem="2nv-ao-lk1" firstAttribute="top" secondItem="m7g-hI-VCO" secondAttribute="top" id="ZRU-17-vku"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TvH-wh-crc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SBB-rg-6xm">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="barItemAction:" destination="HdQ-Ya-SqX" id="dZP-lV-fCV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rightBarButtonItem" destination="SBB-rg-6xm" id="Gyd-Us-3Ec"/>
+                        <outlet property="tableView" destination="2nv-ao-lk1" id="vAD-Pe-0yN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIp-zJ-iUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886.25954198473278" y="708.45070422535218"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oLr-eQ-107">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ag-Wm-8wk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GVq-fB-Y0s">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HdQ-Ya-SqX" kind="relationship" relationship="rootViewController" id="nbH-IV-qLu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5f-FA-SAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-40.458015267175568" y="708.45070422535218"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
