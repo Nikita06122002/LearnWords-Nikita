@@ -13,6 +13,12 @@
 		FA692A142AC072E200293B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA692A122AC072E200293B99 /* Main.storyboard */; };
 		FA692A162AC072E300293B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA692A152AC072E300293B99 /* Assets.xcassets */; };
 		FA692A192AC072E300293B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA692A172AC072E300293B99 /* LaunchScreen.storyboard */; };
+		FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */; };
+		FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */; };
+		FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */; };
+		FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */; };
+		FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D82AC57E6D004A8DF6 /* Word.swift */; };
+		FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		FA692A152AC072E300293B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA692A182AC072E300293B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA692A1A2AC072E300293B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ext.swift"; sourceTree = "<group>"; };
+		FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-ext.swift"; sourceTree = "<group>"; };
+		FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainViewController.swift; sourceTree = "<group>"; };
+		FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		FAE498D82AC57E6D004A8DF6 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewContoller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,77 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
-				FA692A0C2AC072E200293B99 /* AppDelegate.swift */,
-				FA692A0E2AC072E200293B99 /* SceneDelegate.swift */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
-				FA692A122AC072E200293B99 /* Main.storyboard */,
-				FA692A152AC072E300293B99 /* Assets.xcassets */,
-				FA692A172AC072E300293B99 /* LaunchScreen.storyboard */,
-				FA692A1A2AC072E300293B99 /* Info.plist */,
+				FAD5D0362AC61990002A3B19 /* Extension */,
+				FAE498D72AC57E5D004A8DF6 /* Model */,
+				FAE498D42AC57A90004A8DF6 /* Cells */,
+				FAE498D12AC56E68004A8DF6 /* Controllers */,
+				FAE498D02AC56CE6004A8DF6 /* Storyboard */,
+				FAE498CF2AC56CD2004A8DF6 /* Support */,
+				FAE498CE2AC56C66004A8DF6 /* AppDelegate */,
 			);
 			path = "LearnWords-Nikita";
+			sourceTree = "<group>";
+		};
+		FAD5D0362AC61990002A3B19 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */,
+				FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FAE498CE2AC56C66004A8DF6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A0E2AC072E200293B99 /* SceneDelegate.swift */,
+				FA692A0C2AC072E200293B99 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FAE498CF2AC56CD2004A8DF6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A1A2AC072E300293B99 /* Info.plist */,
+				FA692A152AC072E300293B99 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		FAE498D02AC56CE6004A8DF6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA692A122AC072E200293B99 /* Main.storyboard */,
+				FA692A172AC072E300293B99 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FAE498D12AC56E68004A8DF6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */,
+				FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FAE498D42AC57A90004A8DF6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FAE498D72AC57E5D004A8DF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAE498D82AC57E6D004A8DF6 /* Word.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +214,13 @@
 			files = (
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
+				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
+				FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */,
 				FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */,
+				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
+				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
+				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
+				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,12 +373,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LearnWords-Nikita/Info.plist";
+				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,12 +401,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LearnWords-Nikita/Info.plist";
+				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
