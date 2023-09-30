@@ -184,6 +184,25 @@ final class NewWordViewContoller: UIViewController {
         playLabel.font = UIFont.boldSystemFont(ofSize: 16)
         playLabel.text = "Воспроизвести"
         playButton.setImage(UIImage(named: "voice"), for: .normal)
+        
+        //navigation
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = "Новое слово"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(backButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(saveButtonPressed))
+        navigationController?.navigationBar.tintColor = .orange
+        
+        
+        
+    }
+    
+    @objc func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func saveButtonPressed() {
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
