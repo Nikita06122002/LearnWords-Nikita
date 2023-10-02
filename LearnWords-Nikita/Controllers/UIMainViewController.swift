@@ -29,8 +29,7 @@ class UIMainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.dataSource = self
-        
-
+        tableView.delegate = self
     }
     
     @IBAction func barItemAction(_ sender: UIBarButtonItem) {
@@ -44,7 +43,7 @@ class UIMainViewController: UIViewController {
 
 
 //MARK: - Table View Data Source
-extension UIMainViewController: UITableViewDataSource {
+extension UIMainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
     }
@@ -69,10 +68,18 @@ extension UIMainViewController: UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        array.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
+            self.array.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+        }
+        
+        delete.backgroundColor = .orange
+        delete.image = UIImage(systemName: "xmark")
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
-    
-    
 }

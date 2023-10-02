@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startImage" translatesAutoresizingMaskIntoConstraints="NO" id="goB-9Z-cmR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lawson-logo" translatesAutoresizingMaskIntoConstraints="NO" id="goB-9Z-cmR">
                                 <rect key="frame" x="127" y="357.66666666666669" width="139" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="139" id="OFp-sF-Gyw"/>
@@ -62,7 +62,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="startImage" width="139" height="137"/>
+        <image name="lawson-logo" width="137" height="137"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
