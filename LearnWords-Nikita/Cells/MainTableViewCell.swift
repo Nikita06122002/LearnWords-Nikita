@@ -9,19 +9,48 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var translateLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static let identifier = "MainCell"
+    
+    var titleLabel = UILabel()
+    var translateLabel = UILabel()
+    var playButton = UIButton()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    private func setupView() {
+        
+        playButton.setImage(UIImage(named: "voice"), for: .normal)
+        titleLabel.font = .boldSystemFont(ofSize: 16)
+        translateLabel.font = .systemFont(ofSize: 13)
+        
+        contentView.addSubViews(titleLabel, translateLabel, playButton)
+        
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: playButton.trailingAnchor, constant: -10),
 
-        // Configure the view for the selected state
+            
+            translateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 1),
+            translateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            translateLabel.trailingAnchor.constraint(greaterThanOrEqualTo: playButton.trailingAnchor, constant: -10),
+            translateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2),
+            
+            playButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
+            playButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            playButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -17),
+            playButton.widthAnchor.constraint(equalToConstant: 25),
+            playButton.heightAnchor.constraint(equalTo: playButton.widthAnchor, multiplier: 1)
+
+        ])
     }
-
 }

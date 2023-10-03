@@ -13,6 +13,7 @@
 		FA692A142AC072E200293B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA692A122AC072E200293B99 /* Main.storyboard */; };
 		FA692A162AC072E300293B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA692A152AC072E300293B99 /* Assets.xcassets */; };
 		FA692A192AC072E300293B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA692A172AC072E300293B99 /* LaunchScreen.storyboard */; };
+		FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */; };
 		FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */; };
 		FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */; };
 		FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */; };
@@ -30,6 +31,7 @@
 		FA692A152AC072E300293B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA692A182AC072E300293B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA692A1A2AC072E300293B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-ext.swift"; sourceTree = "<group>"; };
 		FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */,
 				FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */,
+				FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */,
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,

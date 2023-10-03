@@ -19,29 +19,62 @@ class UIMainViewController: UIViewController {
                          Word(title: "Street", translate: "Улица")
     ]
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    private var tableView = UITableView()
+    private var rightBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Все слова"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupConstraints()
+        setupView()
+        
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
         
         tableView.dataSource = self
-        
-
+        tableView.delegate = self
     }
     
-    @IBAction func barItemAction(_ sender: UIBarButtonItem) {
+    private func setupConstraints() {
+        view.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 33),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+}
+
+
+extension UIMainViewController {
+    
+    private func setupView() {
+        title = "Все слова"
+        
+        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        
+        rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barItemAction))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        rightBarButtonItem.tintColor = .orange
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .white
+    }
+    
+    
+    @objc func barItemAction() {
         
         let vc = NewWordViewContoller()
         navigationController?.pushViewController(vc, animated: true)
     }
+
 }
-
-
-
 
 //MARK: - Table View Data Source
 extension UIMainViewController: UITableViewDataSource {
@@ -50,7 +83,7 @@ extension UIMainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? MainTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as? MainTableViewCell else {
             return UITableViewCell()
         }
         
@@ -69,10 +102,47 @@ extension UIMainViewController: UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        array.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
+    
+}
+
+extension UIMainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
+            self.array.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+        }
+        delete.backgroundColor = .red
+        delete.image = UIImage(systemName: "xmark")
+        return UISwipeActionsConfiguration(actions: [delete])
     }
     
+}
+
+//MARK: - SwiftUI
+import SwiftUI
+struct UIMainViewController_Provider : PreviewProvider {
+    static var previews: some View {
+        ContainterView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainterView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return UIMainViewController()
+        }
+        
+        typealias UIViewControllerType = UIViewController
+        
+        
+        let viewController = UIMainViewController()
+        func makeUIViewController(context: UIViewControllerRepresentableContext<UIMainViewController_Provider.ContainterView>) -> UIMainViewController {
+            return viewController
+        }
+        
+        func updateUIViewController(_ uiViewController: UIMainViewController_Provider.ContainterView.UIViewControllerType, context: UIViewControllerRepresentableContext<UIMainViewController_Provider.ContainterView>) {
+            
+        }
+    }
     
 }
