@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol NewWordDelegate: AnyObject {
+    func didSaveNewWord(word: Word)
+    func didUpdateWord(word: Word, at index: Int)
+    
+}
+
 final class NewWordViewContoller: UIViewController {
+    
+    var currentWord: Word?
+    var currentIndex: Int?
+    
+    weak var delegate: NewWordDelegate?
     
     //WhiteView
     private let whiteView = UIView(color: .white, radius: 20)
@@ -30,6 +41,11 @@ final class NewWordViewContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let word = currentWord {
+            titleTextField.text = word.title
+            translateTextField.text = word.translate
+        }
         
         let titleContentView = setupContentView(title: "Слово", description: "на вашем языке", textField: titleTextField)
         let translateContentView = setupContentView(title: "Перевод", description: "на языке заучивания", textField: translateTextField)
@@ -126,6 +142,13 @@ final class NewWordViewContoller: UIViewController {
     }
     
     @objc func saveButtonPressed() {
+        let word = Word(title: translateTextField.text ?? "", translate: titleTextField.text ?? "")
+        if let index = currentIndex {
+            delegate?.didUpdateWord(word: word, at: index)
+        } else {
+            delegate?.didSaveNewWord(word: word)
+        }
+        navigationController?.popViewController(animated: true)
         
     }
     

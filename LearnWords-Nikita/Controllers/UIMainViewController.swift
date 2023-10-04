@@ -71,6 +71,7 @@ extension UIMainViewController {
     @objc func barItemAction() {
         
         let vc = NewWordViewContoller()
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -118,6 +119,28 @@ extension UIMainViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRow = array[indexPath.row]
+        let vc = NewWordViewContoller()
+        vc.delegate = self
+        vc.currentWord = selectedRow
+        vc.currentIndex = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
+
+extension UIMainViewController: NewWordDelegate {
+    func didUpdateWord(word: Word, at index: Int) {
+        array[index] = word
+        tableView.reloadData()
+    }
+    
+    func didSaveNewWord(word: Word) {
+        array.append(word)
+        tableView.reloadData()
+    }
 }
 
 //MARK: - SwiftUI
