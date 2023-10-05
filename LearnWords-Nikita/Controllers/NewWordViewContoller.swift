@@ -6,19 +6,25 @@
 //
 
 import UIKit
+import AVKit
 
 protocol NewWordDelegate: AnyObject {
     func didSaveNewWord(word: Word)
     func didUpdateWord(word: Word, at index: Int)
-    
 }
 
-final class NewWordViewContoller: UIViewController {
+final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate {
     
     var currentWord: Word?
     var currentIndex: Int?
     
     weak var delegate: NewWordDelegate?
+    
+    private lazy var synthesizer: AVSpeechSynthesizer = {
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
+        return synthesizer
+    }()
     
     //WhiteView
     private let whiteView = UIView(color: .white, radius: 20)
@@ -26,11 +32,9 @@ final class NewWordViewContoller: UIViewController {
     //stack
     private let stackView = UIStackView()
     
-    //Title
-    private let titleTextField = UITextField(color: UIColor(red: 0.946, green: 0.946, blue: 0.962, alpha: 1))
-    
     //Translate
-    private let translateTextField = UITextField()
+    let titleContentView = UIEditWordTextField(title: "Слово", description: "на вашем языке")
+    let translateContentView = UIEditWordTextField(title: "Перевод", description: "на языке заучивания")
     
     
     //Play
@@ -43,12 +47,11 @@ final class NewWordViewContoller: UIViewController {
         super.viewDidLoad()
         
         if let word = currentWord {
-            titleTextField.text = word.title
-            translateTextField.text = word.translate
+            titleContentView.text = word.title
+            translateContentView.text = word.translate
         }
         
-        let titleContentView = setupContentView(title: "Слово", description: "на вашем языке", textField: titleTextField)
-        let translateContentView = setupContentView(title: "Перевод", description: "на языке заучивания", textField: translateTextField)
+        
         
         view.addSubview(whiteView)
         stackView.addArrangedSubviews(titleContentView, translateContentView, playButtonView)
@@ -59,10 +62,23 @@ final class NewWordViewContoller: UIViewController {
         setupConstraints()
         setupNavigationBar()
         setupView()
+        
+        playButton.addTarget(self, action: #selector(playButtonAction(_:)), for: .touchUpInside)
     }
     
     private func setupNavigationBar() {
         
+    }
+    
+    @objc private func playButtonAction(_ sender: UIButton) {
+        guard let string = titleContentView.text, !string.isEmpty else { return }
+        
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+        utterance.volume = 1.0
+        
+        synthesizer.speak(utterance)
     }
     
     private func setupConstraints() {
@@ -142,7 +158,10 @@ final class NewWordViewContoller: UIViewController {
     }
     
     @objc func saveButtonPressed() {
-        let word = Word(title: translateTextField.text ?? "", translate: titleTextField.text ?? "")
+        let title = titleContentView.text ?? ""
+        let translate = translateContentView.text ?? ""
+        
+        let word = Word(title: title, translate: translate)
         if let index = currentIndex {
             delegate?.didUpdateWord(word: word, at: index)
         } else {
@@ -154,54 +173,6 @@ final class NewWordViewContoller: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-    }
-    
-}
-
-extension NewWordViewContoller {
-    private func setupContentView(title: String, description: String, textField: UITextField) -> UIView {
-        
-        let contentView = UIView(color: .clear)
-        
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .black)
-        
-        let descriptionLabel = UILabel(text: description, font: .boldSystemFont(ofSize: 10), textColor: .systemGray4)
-       
-        
-        let lineView = UIView(color: .systemGray5)
-        
-        textField.placeholder = "Текст"
-        textField.backgroundColor = .white
-        
-        contentView.addSubViews(label, descriptionLabel, textField, lineView)
-        
-        NSLayoutConstraint.activate([
-            //titleLabel
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            label.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            label.heightAnchor.constraint(equalToConstant: 20),
-            
-            //titileDescriptionLabel
-            descriptionLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 1),
-            descriptionLabel.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 12),
-            
-            //TitileTextField
-            textField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 17),
-            textField.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            //TitleLineView
-            lineView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 1),
-            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            lineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1),
-        ])
-        
-        return contentView
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CFAB9182ACECB820078E3D0 /* UITableViewCell-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAB9172ACECB820078E3D0 /* UITableViewCell-ext.swift */; };
+		5CFAB91B2ACED9980078E3D0 /* UIEditWordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAB91A2ACED9980078E3D0 /* UIEditWordTextField.swift */; };
 		FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0C2AC072E200293B99 /* AppDelegate.swift */; };
 		FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0E2AC072E200293B99 /* SceneDelegate.swift */; };
 		FA692A112AC072E200293B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A102AC072E200293B99 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CFAB9172ACECB820078E3D0 /* UITableViewCell-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell-ext.swift"; sourceTree = "<group>"; };
+		5CFAB91A2ACED9980078E3D0 /* UIEditWordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEditWordTextField.swift; sourceTree = "<group>"; };
 		FA692A092AC072E200293B99 /* LearnWords-Nikita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LearnWords-Nikita.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA692A0C2AC072E200293B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA692A0E2AC072E200293B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CFAB9192ACED9780078E3D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CFAB91A2ACED9980078E3D0 /* UIEditWordTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FA692A002AC072E200293B99 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				5CFAB9192ACED9780078E3D0 /* Views */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
 				FAD5D0362AC61990002A3B19 /* Extension */,
 				FAE498D72AC57E5D004A8DF6 /* Model */,
@@ -88,6 +101,7 @@
 				FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */,
 				FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */,
 				FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */,
+				5CFAB9172ACECB820078E3D0 /* UITableViewCell-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -216,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */,
+				5CFAB91B2ACED9980078E3D0 /* UIEditWordTextField.swift in Sources */,
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
@@ -225,6 +240,7 @@
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
+				5CFAB9182ACECB820078E3D0 /* UITableViewCell-ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

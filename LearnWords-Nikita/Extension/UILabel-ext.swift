@@ -9,13 +9,19 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(text: String?, font: UIFont? = nil, textColor: UIColor = .black) {
+    convenience init(text: String? = nil, font: UIFont? = nil, textColor: UIColor? = nil) {
         self.init()
         self.text = text
         if let font = font {
             self.font = font
         }
-        self.textColor = textColor
+        
+        if let textColor = textColor {
+            self.textColor = textColor
+        }
+        
+        self.backgroundColor = .clear
+        self.numberOfLines = 0
     }
     
 }
