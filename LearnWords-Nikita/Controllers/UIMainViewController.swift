@@ -8,9 +8,9 @@
 import UIKit
 
 
-class UIMainViewController: UIViewController {
+final class UIMainViewController: UIViewController {
 
-    var array: [Word] = [Word(title: "Hello", translate: "Привет"),
+    private var array: [Word] = [Word(title: "Hello", translate: "Привет"),
                          Word(title: "House", translate: "Дом"),
                          Word(title: "Winter", translate: "Зима"),
                          Word(title: "Book", translate: "Книга"),
@@ -57,7 +57,7 @@ extension UIMainViewController {
         title = "Все слова"
         
         view.backgroundColor = .white
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         
         rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barItemAction))
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -90,11 +90,8 @@ extension UIMainViewController: UITableViewDataSource {
         
         let row = indexPath.row
         let word = array[row]
-        let title = word.title
-        let translate = word.translate
+        cell.setupView(word: word)
         
-        cell.titleLabel.text = title
-        cell.translateLabel.text = translate
         
         return cell
     }

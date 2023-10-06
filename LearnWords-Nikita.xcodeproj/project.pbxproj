@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */; };
+		FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */; };
 		FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0C2AC072E200293B99 /* AppDelegate.swift */; };
 		FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0E2AC072E200293B99 /* SceneDelegate.swift */; };
 		FA692A112AC072E200293B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A102AC072E200293B99 /* ViewController.swift */; };
@@ -16,6 +18,7 @@
 		FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */; };
 		FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */; };
 		FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */; };
+		FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41E132AD01DBF00EAAF4A /* UIButton-ext.swift */; };
 		FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */; };
 		FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */; };
 		FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D82AC57E6D004A8DF6 /* Word.swift */; };
@@ -23,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell-ext.swift"; sourceTree = "<group>"; };
+		FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEditWordTextField.swift; sourceTree = "<group>"; };
 		FA692A092AC072E200293B99 /* LearnWords-Nikita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LearnWords-Nikita.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA692A0C2AC072E200293B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA692A0E2AC072E200293B99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 		FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-ext.swift"; sourceTree = "<group>"; };
+		FAE41E132AD01DBF00EAAF4A /* UIButton-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton-ext.swift"; sourceTree = "<group>"; };
 		FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainViewController.swift; sourceTree = "<group>"; };
 		FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		FAE498D82AC57E6D004A8DF6 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
@@ -51,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA655F322ACF4D2A00799B83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FA692A002AC072E200293B99 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +84,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				FA655F322ACF4D2A00799B83 /* Views */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
 				FAD5D0362AC61990002A3B19 /* Extension */,
 				FAE498D72AC57E5D004A8DF6 /* Model */,
@@ -86,8 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */,
+				FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */,
 				FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */,
 				FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */,
+				FAE41E132AD01DBF00EAAF4A /* UIButton-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -224,7 +241,10 @@
 				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
+				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
+				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
+				FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

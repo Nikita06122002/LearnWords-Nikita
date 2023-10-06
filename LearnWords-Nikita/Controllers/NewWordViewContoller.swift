@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 protocol NewWordDelegate: AnyObject {
     func didSaveNewWord(word: Word)
@@ -13,52 +14,79 @@ protocol NewWordDelegate: AnyObject {
     
 }
 
-final class NewWordViewContoller: UIViewController {
+final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate {
     
     var currentWord: Word?
     var currentIndex: Int?
     
     weak var delegate: NewWordDelegate?
     
+    
+    private lazy var synthesizer: AVSpeechSynthesizer = {
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
+        return synthesizer
+    }()
+    
     //WhiteView
     private let whiteView = UIView(color: .white, radius: 20)
     
+    //Выбор изображения
+    private let chooseImageView = UIView(color: .white, radius: 20)
+    
+    //stackView chooseImageView
+    private lazy var chooseStackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [chooseImageContentView])
+    
     //stack
-    private let stackView = UIStackView()
-    
-    //Title
-    private let titleTextField = UITextField(color: UIColor(red: 0.946, green: 0.946, blue: 0.962, alpha: 1))
-    
-    //Translate
-    private let translateTextField = UITextField()
+    private lazy var stackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [titleContentView, translateContentView, playButtonView, languageContentView])
     
     
-    //Play
-    private let playButtonView = UIView()
-    private let playLabel = UILabel()
-    private let playButton = UIButton()
+    
+    let titleContentView = UIEditWordTextField(title: "Слово", description: "на вашем языке")
+    
+    let translateContentView = UIEditWordTextField(title: "Перевод", description: "на языке заучивания")
+    
+    let playButtonView = UIEditWordTextField.init(title: "Воспроизвести", buttonImage: "voice", action: #selector(playButtonAction))
+    
+    let languageContentView = UIEditWordTextField.init(buttonTitle: "Английский", languageLabel: "Язык перевода", buttonImage: "transit")
+    
+    let chooseImageContentView = UIEditWordTextField.init(imageName: "redimage", buttonTitle: "Выберите изображение", action: #selector(chooseImageAction))
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let word = currentWord {
-            titleTextField.text = word.title
-            translateTextField.text = word.translate
+            titleContentView.text = word.title
+            translateContentView.text = word.translate
         }
         
-        let titleContentView = setupContentView(title: "Слово", description: "на вашем языке", textField: titleTextField)
-        let translateContentView = setupContentView(title: "Перевод", description: "на языке заучивания", textField: translateTextField)
         
-        view.addSubview(whiteView)
-        stackView.addArrangedSubviews(titleContentView, translateContentView, playButtonView)
+        
+        view.addSubViews(whiteView, chooseImageView)
         whiteView.addSubViews(stackView)
-        playButtonView.addSubViews(playLabel, playButton)
-        
+        chooseImageView.addSubViews(chooseStackView)
         
         setupConstraints()
         setupNavigationBar()
         setupView()
+
+    }
+    
+    @objc private func playButtonAction() {
+        guard let string = titleContentView.text, !string.isEmpty else { return }
+        
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+        utterance.volume = 1.0
+        
+        synthesizer.speak(utterance)
+    }
+    
+    @objc private func chooseImageAction() {
+        
     }
     
     private func setupNavigationBar() {
@@ -68,8 +96,13 @@ final class NewWordViewContoller: UIViewController {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
+            
+            chooseImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            chooseImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            chooseImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            
             //whiteView
-            whiteView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            whiteView.topAnchor.constraint(equalTo: chooseImageView.bottomAnchor, constant: 15),
             whiteView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             whiteView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
@@ -79,22 +112,11 @@ final class NewWordViewContoller: UIViewController {
             stackView.trailingAnchor.constraint (equalTo: whiteView.trailingAnchor, constant: -21),
             stackView.bottomAnchor.constraint(equalTo: whiteView.bottomAnchor, constant: -34),
             
+            chooseStackView.topAnchor.constraint(equalTo: chooseImageView.topAnchor, constant: 6),
+            chooseStackView.leadingAnchor.constraint (equalTo: chooseImageView.leadingAnchor, constant: 21),
+            chooseStackView.trailingAnchor.constraint (equalTo: chooseImageView.trailingAnchor, constant: -21),
+            chooseStackView.bottomAnchor.constraint(equalTo: chooseImageView.bottomAnchor, constant: -34),
             
-            
-            //MARK: - Play Content View
-            
-            //PlayLabel
-            playLabel.topAnchor.constraint(equalTo: playButtonView.topAnchor, constant: 8),
-            playLabel.leadingAnchor.constraint (equalTo: playButtonView.leadingAnchor),
-            playLabel.centerYAnchor.constraint(equalTo: playButtonView.centerYAnchor),
-            playLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            //PlayButton
-            playButton.topAnchor.constraint(greaterThanOrEqualTo: playButtonView.topAnchor, constant: 8),
-            playButton.leadingAnchor.constraint(lessThanOrEqualTo: playLabel.trailingAnchor, constant: 28),
-            playButton.trailingAnchor.constraint(equalTo: playButtonView.trailingAnchor, constant: -7),
-            playButton.widthAnchor.constraint(equalToConstant: 35),
-            playButton.heightAnchor.constraint(equalTo: playButton.widthAnchor, multiplier: 1)
             
         ])
         
@@ -105,21 +127,6 @@ final class NewWordViewContoller: UIViewController {
         //View
         view.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
         
-        //WhiteView
-        whiteView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //StackView
-        stackView.axis = .vertical//вертикальное положение элементов
-        stackView.spacing = 27//расстояние между элементами
-        stackView.alignment = .fill//по всей ширине
-        stackView.distribution = .equalSpacing //расположение высоты
-        
-        
-        //play
-        playButtonView.backgroundColor = .clear
-        playLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        playLabel.text = "Воспроизвести"
-        playButton.setImage(UIImage(named: "voice"), for: .normal)
         
         //navigation
         
@@ -133,8 +140,6 @@ final class NewWordViewContoller: UIViewController {
         
         navigationController?.navigationBar.tintColor = .orange
         
-        
-        
     }
     
     @objc func backButtonPressed() {
@@ -142,7 +147,10 @@ final class NewWordViewContoller: UIViewController {
     }
     
     @objc func saveButtonPressed() {
-        let word = Word(title: translateTextField.text ?? "", translate: titleTextField.text ?? "")
+        let title = titleContentView.text ?? ""
+        let translate = translateContentView.text ?? ""
+        
+        let word = Word(title: title, translate: translate)
         if let index = currentIndex {
             delegate?.didUpdateWord(word: word, at: index)
         } else {
@@ -155,55 +163,8 @@ final class NewWordViewContoller: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
 }
 
-extension NewWordViewContoller {
-    private func setupContentView(title: String, description: String, textField: UITextField) -> UIView {
-        
-        let contentView = UIView(color: .clear)
-        
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .black)
-        
-        let descriptionLabel = UILabel(text: description, font: .boldSystemFont(ofSize: 10), textColor: .systemGray4)
-       
-        
-        let lineView = UIView(color: .systemGray5)
-        
-        textField.placeholder = "Текст"
-        textField.backgroundColor = .white
-        
-        contentView.addSubViews(label, descriptionLabel, textField, lineView)
-        
-        NSLayoutConstraint.activate([
-            //titleLabel
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            label.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            label.heightAnchor.constraint(equalToConstant: 20),
-            
-            //titileDescriptionLabel
-            descriptionLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 1),
-            descriptionLabel.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 12),
-            
-            //TitileTextField
-            textField.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 17),
-            textField.leadingAnchor.constraint (equalTo: contentView.leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            //TitleLineView
-            lineView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 1),
-            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            lineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1),
-        ])
-        
-        return contentView
-    }
-}
 
 //MARK: - SwiftUI
 import SwiftUI
