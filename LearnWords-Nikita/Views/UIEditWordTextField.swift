@@ -9,6 +9,8 @@ import UIKit
 
 final class UIEditWordTextField: UIView {
     
+    weak var editWordTextFieldDelegate: UIEditWordTextFieldDelegate?
+    
     private let textField: UITextField = UITextField(color: UIColor(red: 0.946, green: 0.946, blue: 0.962, alpha: 1))
     
     var text: String? {
@@ -24,9 +26,9 @@ final class UIEditWordTextField: UIView {
     
     //Выбор изображения
     
-    init(imageName: String, buttonTitle: String, action: Selector) {
+    init(imageName: String, buttonTitle: String) {
         super.init(frame: .infinite)
-        setupChooseImageContentView(imageName: imageName, buttonTitle: buttonTitle, action: action)
+        setupChooseImageContentView(imageName: imageName, buttonTitle: buttonTitle)
     }
     
     //Контент вью для выбора языка
@@ -162,10 +164,10 @@ final class UIEditWordTextField: UIView {
     
     
     //MARK: - Выбор изображения
-    private func setupChooseImageContentView(imageName: String, buttonTitle: String, action: Selector) {
+    private func setupChooseImageContentView(imageName: String, buttonTitle: String) {
         let redImageView = UIImageView(image: UIImage(named: imageName))
         let button = UIButton(title: buttonTitle, titleColor: .systemGray4, font: 15)
-        button.addTarget(self, action: action, for: .touchUpInside)
+        button.addTarget(self, action: #selector(chooseImageAction), for: .touchUpInside)
         self.backgroundColor = .clear
         
         self.addSubViews(redImageView, button)
@@ -183,4 +185,13 @@ final class UIEditWordTextField: UIView {
         
     }
     
+    @objc private func chooseImageAction() {
+        editWordTextFieldDelegate?.didTapChooseImage(in: self)
+    }
+    
+}
+
+
+protocol UIEditWordTextFieldDelegate: AnyObject {
+    func didTapChooseImage(in view: UIEditWordTextField)
 }

@@ -50,9 +50,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     
     let languageContentView = UIEditWordTextField.init(buttonTitle: "Английский", languageLabel: "Язык перевода", buttonImage: "transit")
     
-    let chooseImageContentView = UIEditWordTextField.init(imageName: "redimage", buttonTitle: "Выберите изображение", action: #selector(chooseImageAction))
-
-    
+    let chooseImageContentView = UIEditWordTextField.init(imageName: "redimage", buttonTitle: "Выберите изображение")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +59,8 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
             titleContentView.text = word.title
             translateContentView.text = word.translate
         }
-        
-        
+        //делегат
+        chooseImageContentView.editWordTextFieldDelegate = self
         
         view.addSubViews(whiteView, chooseImageView)
         whiteView.addSubViews(stackView)
@@ -84,10 +82,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
         
         synthesizer.speak(utterance)
     }
-    
-    @objc private func chooseImageAction() {
-        
-    }
+
     
     private func setupNavigationBar() {
         
@@ -163,6 +158,22 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+}
+
+extension NewWordViewContoller: UIEditWordTextFieldDelegate {
+    
+    func didTapChooseImage(in view: UIEditWordTextField) {
+        let alert = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Фотоальбом", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Интернет", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 
