@@ -42,15 +42,15 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     
     
     
-    let titleContentView = UIEditWordTextField(title: "Слово", description: "на вашем языке")
+    private let titleContentView = UIEditWordTextField(title: "Слово", description: "на вашем языке")
     
-    let translateContentView = UIEditWordTextField(title: "Перевод", description: "на языке заучивания")
+    private let translateContentView = UIEditWordTextField(title: "Перевод", description: "на языке заучивания")
     
-    let playButtonView = UIEditWordTextField.init(title: "Воспроизвести", buttonImage: "voice", action: #selector(playButtonAction))
+    private let playButtonView = LanguageAndVoice.init(title: "Воспроизвести", buttonImage: "voice", action: #selector(playButtonAction))
     
-    let languageContentView = UIEditWordTextField.init(buttonTitle: "Английский", languageLabel: "Язык перевода", buttonImage: "transit")
+    private let languageContentView = LanguageAndVoice.init(buttonTitle: "Английский", languageLabel: "Язык перевода", buttonImage: "transit")
     
-    let chooseImageContentView = UIEditWordTextField.init(imageName: "redimage", buttonTitle: "Выберите изображение")
+    private let chooseImageContentView = LanguageAndVoice.init(imageName: "redimage", buttonTitle: "Выберите изображение")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
             translateContentView.text = word.translate
         }
         //делегат
-        chooseImageContentView.editWordTextFieldDelegate = self
+        chooseImageContentView.languageAndVoiceDelegate = self
         
         view.addSubViews(whiteView, chooseImageView)
         whiteView.addSubViews(stackView)
@@ -160,9 +160,9 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     }
 }
 
-extension NewWordViewContoller: UIEditWordTextFieldDelegate {
+extension NewWordViewContoller: LanguageAndVoiceDelegate {
     
-    func didTapChooseImage(in view: UIEditWordTextField) {
+    func didTapChooseImage(in view: LanguageAndVoice) {
         let alert = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Фотоальбом", style: .default, handler: nil))
