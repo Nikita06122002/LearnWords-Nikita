@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import AVKit
 
-
-final class UIMainViewController: UIViewController {
+final class UIMainViewController: ViewController {
 
     private var array: [Word] = [Word(title: "Hello", translate: "Привет"),
                          Word(title: "House", translate: "Дом"),
@@ -56,15 +56,15 @@ extension UIMainViewController {
     private func setupView() {
         title = "Все слова"
         
-        view.backgroundColor = .white
+        view.backgroundColor = .custom.white
         tableView.backgroundColor = .clear
         
         rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barItemAction))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        rightBarButtonItem.tintColor = .orange
+        rightBarButtonItem.tintColor = .custom.orange
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = .custom.white
     }
     
     
@@ -91,6 +91,7 @@ extension UIMainViewController: UITableViewDataSource {
         let row = indexPath.row
         let word = array[row]
         cell.setupView(word: word)
+        cell.addTarget(self, action: #selector(playButtonAction(_:)))
         
         
         return cell
@@ -98,6 +99,26 @@ extension UIMainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    @objc private func playButtonAction(_ sender: UIButton) {
+        
+        let row = sender.tag
+        let word = array[row]
+        alert(title: word.title, message: word.translate, actionTitle: "Воспроизвести") { _ in
+            self.playButtonAction(text: word.title)
+        }
+    }
+    
+    @objc private func playButtonAction(text: String? ) {
+        guard let string = text, !string.isEmpty else { return }
+        
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+        utterance.volume = 1.0
+        
+        synthesizer.speak(utterance)
     }
     
     
@@ -111,7 +132,7 @@ extension UIMainViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         }
-        delete.backgroundColor = .red
+        delete.backgroundColor = .custom.red
         delete.image = UIImage(systemName: "xmark")
         return UISwipeActionsConfiguration(actions: [delete])
     }

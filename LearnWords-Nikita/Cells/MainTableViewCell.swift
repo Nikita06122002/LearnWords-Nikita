@@ -58,4 +58,10 @@ final class MainTableViewCell: UITableViewCell {
         
     }
     
+    func addTarget(_ target: Any, action: Selector) {
+        playButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
 }
+
+

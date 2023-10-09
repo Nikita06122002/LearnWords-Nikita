@@ -10,7 +10,7 @@ import UIKit
 final class UIEditWordTextField: UIView {
     
     
-    private let textField: UITextField = UITextField(color: UIColor(red: 0.946, green: 0.946, blue: 0.962, alpha: 1))
+    private let textField: UITextField = UITextField(color: .custom.gray)
     
     var text: String? {
         get {
@@ -37,16 +37,16 @@ final class UIEditWordTextField: UIView {
     private func setupContentView(title: String, description: String) {
         
         
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .black)
+        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .custom.black)
         
-        let descriptionLabel = UILabel(text: description, font: .boldSystemFont(ofSize: 10), textColor: .systemGray4)
+        let descriptionLabel = UILabel(text: description, font: .boldSystemFont(ofSize: 10), textColor: .custom.gray)
         
-        let lineView = UIView(color: .systemGray5)
+        let lineView = UIView(color: .custom.gray)
         
         
         
         textField.placeholder = "Текст"
-        textField.backgroundColor = .white
+        textField.backgroundColor = .custom.white
         
         self.addSubViews(label, descriptionLabel, textField, lineView)
         

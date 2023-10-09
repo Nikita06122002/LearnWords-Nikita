@@ -6,52 +6,35 @@
 //
 
 import UIKit
+import AVKit
 
-
-class Test {
-    var text: String = " "
-}
-
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
-    var click = 0
-
-    @IBOutlet weak var label: UILabel!
+    
+    lazy var synthesizer: AVSpeechSynthesizer = {
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
+        return synthesizer
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let value = Test()
-        
-        value.text = "Новое значение"
-        print(value.text) //1
-        
-        
-//        let text = "Новое значение"
-        view.backgroundColor = .yellow
-        label.backgroundColor = .clear
-        
-        
-        setup(string: value)
-        print(value.text)
+        view.backgroundColor = .custom.white
 
     }
     
-    func setup(string test: Test) {
-        test.text = "agdagdgagdaga"
-        label.text = test.text
+    func alert(title: String?, message: String?, actionTitle: String?, action: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let closed = UIAlertAction(title: "Закрыть", style: .cancel)
+        
+        if let action = action {
+            let newButton = UIAlertAction(title: actionTitle, style: .default, handler: action)
+            alert.addAction(newButton)
+        }
+        
+        alert.addAction(closed)
+        self.present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func tapButtonAction(_ sender: UIButton) {
-        
-        startAction()
-    }
-    
-    
-    func startAction() {
-        let text = "Новое значение"
-        click += 1
-        label.text = text + String(click)
-    }
 }
 

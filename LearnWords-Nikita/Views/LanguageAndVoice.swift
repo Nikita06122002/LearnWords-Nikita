@@ -11,6 +11,7 @@ final class LanguageAndVoice: UIView {
 
     weak var languageAndVoiceDelegate: LanguageAndVoiceDelegate?
     
+    private lazy var button: UIButton = .init()
     
     
     //Выбор изображения
@@ -64,13 +65,10 @@ final class LanguageAndVoice: UIView {
     }
     //MARK: - Контентвью для воспроизведения слов голосом
     private func setupPlayContentView(title: String, buttonImage: String, action: Selector) {
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .black)
-        let button = UIButton(setImage: UIImage(named: buttonImage))
-        let lineView = UIView(color: .systemGray4)
+        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .custom.black)
+        button.setImage(UIImage(named: buttonImage), for: .normal)
+        let lineView = UIView(color: .custom.gray)
         self.backgroundColor = .clear
-        
-        button.addTarget(self, action: action, for: .touchUpInside)
-        
         self.addSubViews(label, button, lineView)
         
         NSLayoutConstraint.activate([
@@ -103,7 +101,7 @@ final class LanguageAndVoice: UIView {
     //MARK: - Выбор изображения
     private func setupChooseImageContentView(imageName: String, buttonTitle: String) {
         let redImageView = UIImageView(image: UIImage(named: imageName))
-        let button = UIButton(title: buttonTitle, titleColor: .systemGray4, font: 15)
+        let button = UIButton(title: buttonTitle, titleColor: .custom.gray, font: 15)
         button.addTarget(self, action: #selector(chooseImageAction), for: .touchUpInside)
         self.backgroundColor = .clear
         
@@ -123,12 +121,12 @@ final class LanguageAndVoice: UIView {
     }
     
     @objc private func chooseImageAction() {
-        languageAndVoiceDelegate?.didTapChooseImage(in: self)
+        languageAndVoiceDelegate?.didTapChooseImage()
     }
     
 }
 
 
 protocol LanguageAndVoiceDelegate: AnyObject {
-    func didTapChooseImage(in view: LanguageAndVoice)
+    func didTapChooseImage()
 }

@@ -14,7 +14,7 @@ protocol NewWordDelegate: AnyObject {
     
 }
 
-final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate {
+final class NewWordViewContoller: ViewController {
     
     var currentWord: Word?
     var currentIndex: Int?
@@ -22,17 +22,17 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     weak var delegate: NewWordDelegate?
     
     
-    private lazy var synthesizer: AVSpeechSynthesizer = {
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.delegate = self
-        return synthesizer
-    }()
+//    private lazy var synthesizer: AVSpeechSynthesizer = {
+//        let synthesizer = AVSpeechSynthesizer()
+//        synthesizer.delegate = self
+//        return synthesizer
+//    }()
     
     //WhiteView
-    private let whiteView = UIView(color: .white, radius: 20)
+    private let whiteView = UIView(color: .custom.white, radius: 20)
     
     //Выбор изображения
-    private let chooseImageView = UIView(color: .white, radius: 20)
+    private let chooseImageView = UIView(color: .custom.white, radius: 20)
     
     //stackView chooseImageView
     private lazy var chooseStackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [chooseImageContentView])
@@ -72,7 +72,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
 
     }
     
-    @objc private func playButtonAction() {
+    @objc private func playButtonAction(_ sender: UIButton) {
         guard let string = titleContentView.text, !string.isEmpty else { return }
         
         let utterance = AVSpeechUtterance(string: string)
@@ -118,11 +118,6 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     }
     
     private func setupView() {
-        
-        //View
-        view.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
-        
-        
         //navigation
         
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -133,7 +128,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(saveButtonPressed))
         
-        navigationController?.navigationBar.tintColor = .orange
+        navigationController?.navigationBar.tintColor = .custom.orange
         
     }
     
@@ -161,8 +156,8 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
 }
 
 extension NewWordViewContoller: LanguageAndVoiceDelegate {
-    
-    func didTapChooseImage(in view: LanguageAndVoice) {
+
+    func didTapChooseImage() {
         let alert = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Фотоальбом", style: .default, handler: nil))
@@ -170,6 +165,12 @@ extension NewWordViewContoller: LanguageAndVoiceDelegate {
         alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = self.view
+            let frame = view.bounds
+            popover.sourceRect = .init(x: frame.midX - 30, y: frame.midY, width: 1, height: 1)
+        }
         self.present(alert, animated: true, completion: nil)
     }
     
