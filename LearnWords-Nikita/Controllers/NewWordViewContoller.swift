@@ -14,7 +14,7 @@ protocol NewWordDelegate: AnyObject {
     
 }
 
-final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate {
+final class NewWordViewContoller: ViewController {
     
     var currentWord: Word?
     var currentIndex: Int?
@@ -22,20 +22,11 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     weak var delegate: NewWordDelegate?
     
     
-    private lazy var synthesizer: AVSpeechSynthesizer = {
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.delegate = self
-        return synthesizer
-    }()
-    
     //WhiteView
     private let whiteView = UIView(color: .white, radius: 20)
     
     //Выбор изображения
     private let chooseImageView = UIView(color: .white, radius: 20)
-    
-    //stackView chooseImageView
-    private lazy var chooseStackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [chooseImageContentView])
     
     //stack
     private lazy var stackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [titleContentView, translateContentView, playButtonView, languageContentView])
@@ -46,7 +37,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
     
     private let translateContentView = UIEditWordTextField(title: "Перевод", description: "на языке заучивания")
     
-    private let playButtonView = LanguageAndVoice.init(title: "Воспроизвести", buttonImage: "voice", action: #selector(playButtonAction))
+    private let playButtonView = LanguageAndVoice(title: "Воспроизвести", buttonImage: "voice")
     
     private let languageContentView = LanguageAndVoice.init(buttonTitle: "Английский", languageLabel: "Язык перевода", buttonImage: "transit")
     
@@ -64,15 +55,16 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
         
         view.addSubViews(whiteView, chooseImageView)
         whiteView.addSubViews(stackView)
-        chooseImageView.addSubViews(chooseStackView)
+        chooseImageView.addSubViews(chooseImageContentView)
         
         setupConstraints()
         setupNavigationBar()
         setupView()
-
+        
+        playButtonView.addTarget(self, action: #selector(playButtonAction))
     }
     
-    @objc private func playButtonAction() {
+    @objc private func playButtonAction(_ sender: UIButton) {
         guard let string = titleContentView.text, !string.isEmpty else { return }
         
         let utterance = AVSpeechUtterance(string: string)
@@ -107,22 +99,15 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
             stackView.trailingAnchor.constraint (equalTo: whiteView.trailingAnchor, constant: -21),
             stackView.bottomAnchor.constraint(equalTo: whiteView.bottomAnchor, constant: -34),
             
-            chooseStackView.topAnchor.constraint(equalTo: chooseImageView.topAnchor, constant: 6),
-            chooseStackView.leadingAnchor.constraint (equalTo: chooseImageView.leadingAnchor, constant: 21),
-            chooseStackView.trailingAnchor.constraint (equalTo: chooseImageView.trailingAnchor, constant: -21),
-            chooseStackView.bottomAnchor.constraint(equalTo: chooseImageView.bottomAnchor, constant: -34),
-            
-            
+            chooseImageContentView.topAnchor.constraint(equalTo: chooseImageView.topAnchor, constant: 6),
+            chooseImageContentView.leadingAnchor.constraint (equalTo: chooseImageView.leadingAnchor, constant: 21),
+            chooseImageContentView.trailingAnchor.constraint (equalTo: chooseImageView.trailingAnchor, constant: -21),
+            chooseImageContentView.bottomAnchor.constraint(equalTo: chooseImageView.bottomAnchor, constant: -34),
         ])
         
     }
     
     private func setupView() {
-        
-        //View
-        view.backgroundColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
-        
-        
         //navigation
         
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -162,7 +147,7 @@ final class NewWordViewContoller: UIViewController, AVSpeechSynthesizerDelegate 
 
 extension NewWordViewContoller: LanguageAndVoiceDelegate {
     
-    func didTapChooseImage(in view: LanguageAndVoice) {
+    func didTapChooseImage() {
         let alert = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Фотоальбом", style: .default, handler: nil))
@@ -170,6 +155,15 @@ extension NewWordViewContoller: LanguageAndVoiceDelegate {
         alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = self.view
+            let frame = view.bounds
+            popover.sourceRect = .init(x: frame.midX - 30, y: frame.midY, width: 1, height: 1)
+        }
+        
+        
         self.present(alert, animated: true, completion: nil)
     }
     

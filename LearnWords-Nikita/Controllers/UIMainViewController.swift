@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import AVKit
 
 
-final class UIMainViewController: UIViewController {
+final class UIMainViewController: ViewController {
 
     private var array: [Word] = [Word(title: "Hello", translate: "Привет"),
                          Word(title: "House", translate: "Дом"),
@@ -40,7 +41,6 @@ final class UIMainViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 33),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
@@ -55,16 +55,14 @@ extension UIMainViewController {
     
     private func setupView() {
         title = "Все слова"
-        
-        view.backgroundColor = .white
         tableView.backgroundColor = .clear
         
         rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barItemAction))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        rightBarButtonItem.tintColor = .orange
+        rightBarButtonItem.tintColor = .custom.orange
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = .custom.white
     }
     
     
@@ -90,8 +88,8 @@ extension UIMainViewController: UITableViewDataSource {
         
         let row = indexPath.row
         let word = array[row]
-        cell.setupView(word: word)
-        
+        cell.setupView(word: word, index: row)
+        cell.addTarget(self, action: #selector(playButtonAction(_:)))
         
         return cell
     }
@@ -100,6 +98,27 @@ extension UIMainViewController: UITableViewDataSource {
         return true
     }
     
+    
+    @objc private func playButtonAction(_ sender: UIButton) {
+        let row = sender.tag
+        let word = array[row]
+        alert(title: word.title, message: word.translate, actionTitle: "Воспроизвести", action: { _ in
+            self.playButtonAction(text: word.title)
+        })
+    }
+    
+    
+    @objc private func playButtonAction(text: String? ) {
+        guard let string = text, !string.isEmpty else { return }
+        
+        let utterance = AVSpeechUtterance(string: string)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+        utterance.volume = 1.0
+        
+        synthesizer.speak(utterance)
+    }
+
     
 }
 

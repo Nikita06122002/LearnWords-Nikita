@@ -52,10 +52,14 @@ final class MainTableViewCell: UITableViewCell {
         ])
     }
     
-    func setupView(word: Word) {
+    func setupView(word: Word, index: Int) {
         titleLabel.text = word.title
         translateLabel.text = word.translate
-        
+        playButton.tag = index
     }
     
+    
+    func addTarget(_ target: Any, action: Selector) {
+        playButton.addTarget(target, action: action, for: .touchUpInside)
+    }
 }

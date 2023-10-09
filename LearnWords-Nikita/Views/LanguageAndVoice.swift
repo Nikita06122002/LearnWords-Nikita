@@ -10,7 +10,7 @@ import UIKit
 final class LanguageAndVoice: UIView {
 
     weak var languageAndVoiceDelegate: LanguageAndVoiceDelegate?
-    
+    private lazy var button: UIButton = .init()
     
     
     //Выбор изображения
@@ -27,9 +27,9 @@ final class LanguageAndVoice: UIView {
     }
     
     //воспроизведение голосом
-    init(title: String, buttonImage: String, action: Selector) {
+    init(title: String, buttonImage: String) {
         super.init(frame: .infinite)
-        setupPlayContentView(title: title, buttonImage: buttonImage, action: action)
+        setupPlayContentView(title: title, buttonImage: buttonImage)
     }
     
     required init?(coder: NSCoder) {
@@ -63,14 +63,11 @@ final class LanguageAndVoice: UIView {
         ])
     }
     //MARK: - Контентвью для воспроизведения слов голосом
-    private func setupPlayContentView(title: String, buttonImage: String, action: Selector) {
+    private func setupPlayContentView(title: String, buttonImage: String) {
         let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .black)
-        let button = UIButton(setImage: UIImage(named: buttonImage))
+        button.setImage(UIImage(named: buttonImage), for: .normal)
         let lineView = UIView(color: .systemGray4)
         self.backgroundColor = .clear
-        
-        button.addTarget(self, action: action, for: .touchUpInside)
-        
         self.addSubViews(label, button, lineView)
         
         NSLayoutConstraint.activate([
@@ -96,7 +93,10 @@ final class LanguageAndVoice: UIView {
 
 
         ])
-        
+    }
+    
+    func addTarget(_ target: Any, action: Selector) {
+        button.addTarget(target, action: action, for: .touchUpInside)
     }
     
     
@@ -123,12 +123,12 @@ final class LanguageAndVoice: UIView {
     }
     
     @objc private func chooseImageAction() {
-        languageAndVoiceDelegate?.didTapChooseImage(in: self)
+        languageAndVoiceDelegate?.didTapChooseImage()
     }
     
 }
 
 
 protocol LanguageAndVoiceDelegate: AnyObject {
-    func didTapChooseImage(in view: LanguageAndVoice)
+    func didTapChooseImage()
 }
