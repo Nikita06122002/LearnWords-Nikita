@@ -6,16 +6,8 @@
 //
 
 import UIKit
-import AVKit
 
-class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
-    
-    
-    lazy var synthesizer: AVSpeechSynthesizer = {
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.delegate = self
-        return synthesizer
-    }()
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
