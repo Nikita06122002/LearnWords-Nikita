@@ -20,6 +20,10 @@
 		FA692A162AC072E300293B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA692A152AC072E300293B99 /* Assets.xcassets */; };
 		FA692A192AC072E300293B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA692A172AC072E300293B99 /* LaunchScreen.storyboard */; };
 		FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */; };
+		FAB0E7BB2AD69510004EBC07 /* UIImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */; };
+		FAB0E7BD2AD695AE004EBC07 /* UICollectionViewCell-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0E7BC2AD695AE004EBC07 /* UICollectionViewCell-ext.swift */; };
+		FAB0E7BF2AD6978F004EBC07 /* UITableView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0E7BE2AD6978F004EBC07 /* UITableView-ext.swift */; };
+		FAB0E7C12AD69829004EBC07 /* UICollectionView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0E7C02AD69829004EBC07 /* UICollectionView-ext.swift */; };
 		FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */; };
 		FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */; };
 		FAE3E7942AD2C5CA006B8AFD /* LanguageAndVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE3E7932AD2C5CA006B8AFD /* LanguageAndVoice.swift */; };
@@ -46,6 +50,10 @@
 		FA692A182AC072E300293B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA692A1A2AC072E300293B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel-ext.swift"; sourceTree = "<group>"; };
+		FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAB0E7BC2AD695AE004EBC07 /* UICollectionViewCell-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell-ext.swift"; sourceTree = "<group>"; };
+		FAB0E7BE2AD6978F004EBC07 /* UITableView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView-ext.swift"; sourceTree = "<group>"; };
+		FAB0E7C02AD69829004EBC07 /* UICollectionView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0372AC619B0002A3B19 /* UIView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ext.swift"; sourceTree = "<group>"; };
 		FAD5D0392AC61AD3002A3B19 /* UIStackView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView-ext.swift"; sourceTree = "<group>"; };
 		FAE3E7932AD2C5CA006B8AFD /* LanguageAndVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageAndVoice.swift; sourceTree = "<group>"; };
@@ -128,6 +136,9 @@
 				FA7E043D2ACC36FF0082311E /* UILabel-ext.swift */,
 				FAE41E132AD01DBF00EAAF4A /* UIButton-ext.swift */,
 				FA0963572AD427CB00909D62 /* UIColor-ext.swift */,
+				FAB0E7BC2AD695AE004EBC07 /* UICollectionViewCell-ext.swift */,
+				FAB0E7BE2AD6978F004EBC07 /* UITableView-ext.swift */,
+				FAB0E7C02AD69829004EBC07 /* UICollectionView-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */,
+				FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -255,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */,
+				FAB0E7C12AD69829004EBC07 /* UICollectionView-ext.swift in Sources */,
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
@@ -263,11 +276,14 @@
 				FAE3E7942AD2C5CA006B8AFD /* LanguageAndVoice.swift in Sources */,
 				FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */,
 				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
+				FAB0E7BD2AD695AE004EBC07 /* UICollectionViewCell-ext.swift in Sources */,
 				FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */,
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
+				FAB0E7BF2AD6978F004EBC07 /* UITableView-ext.swift in Sources */,
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
+				FAB0E7BB2AD69510004EBC07 /* UIImageCollectionViewCell.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
 				FA4E99BD2AD5AC3200E09670 /* ChooseImageViewProtocol.swift in Sources */,
 				FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */,

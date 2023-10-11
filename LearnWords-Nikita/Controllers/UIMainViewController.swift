@@ -22,7 +22,7 @@ final class UIMainViewController: ViewController, AVKitProtocol {
                          Word(title: "Street", translate: "Улица")
     ]
     
-    private var tableView = UITableView()
+    private var tableView = UITableView(backgroungColor: .clear)
     private var rightBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
@@ -60,7 +60,6 @@ extension UIMainViewController {
         title = "Все слова"
         
         view.backgroundColor = .custom.white
-        tableView.backgroundColor = .clear
         
         rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barItemAction))
         navigationItem.rightBarButtonItem = rightBarButtonItem

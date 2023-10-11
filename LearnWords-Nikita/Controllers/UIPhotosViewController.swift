@@ -25,9 +25,8 @@ class UIPhotosViewController: ViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
         
-        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        return collectionView
+        let collectView = UICollectionView(backgroundColor: .clear, frame: view.bounds, layout: layout)
+        return collectView
     }()
     
     override func viewDidLoad() {
@@ -68,16 +67,3 @@ extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewData
     
 }
 
-final class UIImageCollectionViewCell: UICollectionViewCell {
-        
-    class var identifier: String { "UIImageCollectionViewCell" }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .orange
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
