@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  LearnWords-Nikita
+
+  Created by Алмаз Рахматуллин on 10.10.2023.
+  
+*/
+
+
+NSCameraUsageDescription = "Предоставте доступ к камере для бла бла бла";
+NSPhotoLibraryUsageDescription = "Предоставте доступ к камере для бла бла бла";

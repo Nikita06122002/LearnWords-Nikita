@@ -8,7 +8,8 @@
 import UIKit
 import AVKit
 
-final class UIMainViewController: ViewController {
+final class UIMainViewController: ViewController, AVKitProtocol {
+    var synthesizer: AVSpeechSynthesizer!
 
     private var array: [Word] = [Word(title: "Hello", translate: "Привет"),
                          Word(title: "House", translate: "Дом"),
@@ -106,22 +107,9 @@ extension UIMainViewController: UITableViewDataSource {
         let row = sender.tag
         let word = array[row]
         alert(title: word.title, message: word.translate, actionTitle: "Воспроизвести") { _ in
-            self.playButtonAction(text: word.title)
+            self.playSound(word.title, language: "en-US")
         }
     }
-    
-    @objc private func playButtonAction(text: String? ) {
-        guard let string = text, !string.isEmpty else { return }
-        
-        let utterance = AVSpeechUtterance(string: string)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.4
-        utterance.volume = 1.0
-        
-        synthesizer.speak(utterance)
-    }
-    
-    
 }
 
 extension UIMainViewController: UITableViewDelegate {

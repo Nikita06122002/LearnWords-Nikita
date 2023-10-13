@@ -71,6 +71,8 @@ final class LanguageAndVoice: UIView {
         self.backgroundColor = .clear
         self.addSubViews(label, button, lineView)
         
+        button.addTarget(nil, action: action, for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             //PlayLabel
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),

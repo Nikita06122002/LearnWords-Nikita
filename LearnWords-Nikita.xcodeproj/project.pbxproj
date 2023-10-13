@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1C4D272AD518E9000E59CA /* AVKitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C4D262AD518E9000E59CA /* AVKitProtocol.swift */; };
+		5C1C4D292AD523A4000E59CA /* UIChooseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C4D282AD523A4000E59CA /* UIChooseImageView.swift */; };
+		5C1C4D2B2AD529D8000E59CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C1C4D2A2AD529D8000E59CA /* InfoPlist.strings */; };
+		5C1C4D2D2AD52B5E000E59CA /* UIPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C4D2C2AD52B5E000E59CA /* UIPhotosViewController.swift */; };
 		FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0963572AD427CB00909D62 /* UIColor-ext.swift */; };
 		FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */; };
 		FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1C4D262AD518E9000E59CA /* AVKitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVKitProtocol.swift; sourceTree = "<group>"; };
+		5C1C4D282AD523A4000E59CA /* UIChooseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseImageView.swift; sourceTree = "<group>"; };
+		5C1C4D2A2AD529D8000E59CA /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		5C1C4D2C2AD52B5E000E59CA /* UIPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPhotosViewController.swift; sourceTree = "<group>"; };
 		FA0963572AD427CB00909D62 /* UIColor-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-ext.swift"; sourceTree = "<group>"; };
 		FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell-ext.swift"; sourceTree = "<group>"; };
 		FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEditWordTextField.swift; sourceTree = "<group>"; };
@@ -59,11 +67,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C1C4D252AD518D9000E59CA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5C1C4D262AD518E9000E59CA /* AVKitProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		FA655F322ACF4D2A00799B83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */,
 				FAE3E7932AD2C5CA006B8AFD /* LanguageAndVoice.swift */,
+				5C1C4D282AD523A4000E59CA /* UIChooseImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,6 +104,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				5C1C4D252AD518D9000E59CA /* Protocols */,
 				FA655F322ACF4D2A00799B83 /* Views */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
 				FAD5D0362AC61990002A3B19 /* Extension */,
@@ -126,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				FA692A1A2AC072E300293B99 /* Info.plist */,
+				5C1C4D2A2AD529D8000E59CA /* InfoPlist.strings */,
 				FA692A152AC072E300293B99 /* Assets.xcassets */,
 			);
 			path = Support;
@@ -144,6 +163,7 @@
 			children = (
 				FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */,
 				FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */,
+				5C1C4D2C2AD52B5E000E59CA /* UIPhotosViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA692A192AC072E300293B99 /* LaunchScreen.storyboard in Resources */,
+				5C1C4D2B2AD529D8000E59CA /* InfoPlist.strings in Resources */,
 				FA692A162AC072E300293B99 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,12 +264,15 @@
 				FAE3E7942AD2C5CA006B8AFD /* LanguageAndVoice.swift in Sources */,
 				FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */,
 				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
+				5C1C4D292AD523A4000E59CA /* UIChooseImageView.swift in Sources */,
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
+				5C1C4D2D2AD52B5E000E59CA /* UIPhotosViewController.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
 				FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */,
+				5C1C4D272AD518E9000E59CA /* AVKitProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
