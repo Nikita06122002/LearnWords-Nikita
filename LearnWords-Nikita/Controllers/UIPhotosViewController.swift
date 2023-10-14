@@ -13,27 +13,26 @@ protocol UIPhotosViewControllerProtocol: AnyObject {
 
 class UIPhotosViewController: ViewController {
     
+    private var arrayURLs = [" ", " ", " "]
+    
     weak var delegate: UIPhotosViewControllerProtocol?
     
-    private lazy var collectionView: UICollectionView = {
-        
-        let spacing = 5.0
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        layout.scrollDirection = .vertical
-        layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        
-        let collectView = UICollectionView(backgroundColor: .clear, frame: view.bounds, layout: layout)
-        return collectView
-    }()
+    private let spacing = 5.0
+    
+    private lazy var collectionView = UICollectionView(backgroundColor: .clear, frame: view.bounds, spacing: 5)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         initialize()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        downloadPhotos()
     }
     
     func initialize() {
@@ -51,19 +50,46 @@ class UIPhotosViewController: ViewController {
     
 }
 
-extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return arrayURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UIImageCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UIImageCollectionViewCell.identifier, for: indexPath) as? UIImageCollectionViewCell else { return UIImageCollectionViewCell() }
         
+        let text = arrayURLs[indexPath.item]
+        cell.setupView(text)
         cell.backgroundColor = .custom.orange
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let count = 3.0
+        let widhtCollectionView = collectionView.bounds.width
+        let fillSpacing = spacing * (count + 1)
+        let widht = (widhtCollectionView - fillSpacing) / count
+        
+        return .init(width: widht, height: 100)
+    }
     
+    
+}
+
+extension UIPhotosViewController {
+    
+    private func resultNetwork(array: [String]) {
+        self.arrayURLs = array
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func downloadPhotos() {
+        Network.shared.getPhotos(text: "test", completion: resultNetwork)
+    }
 }
 

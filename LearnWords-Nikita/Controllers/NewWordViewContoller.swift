@@ -27,7 +27,7 @@ final class NewWordViewContoller: ViewController, AVKitProtocol {
     private let whiteView = UIView(color: .custom.white, radius: 20)
     
     //Выбор изображения
-    private let chooseImageView = UIChooseImageView()
+    private let chooseImageView = UIChooseImageView.init()
     
     //stack
     private lazy var stackView = UIStackView(.vertical, 27, .fill, .equalSpacing, [titleContentView, translateContentView, playButtonView, languageContentView])
