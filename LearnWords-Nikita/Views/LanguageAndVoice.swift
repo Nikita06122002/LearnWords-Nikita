@@ -8,18 +8,8 @@
 import UIKit
 
 final class LanguageAndVoice: UIView {
-
-    weak var languageAndVoiceDelegate: LanguageAndVoiceDelegate?
     
     private lazy var button: UIButton = .init()
-    
-    
-    //Выбор изображения
-    
-    init(imageName: String, buttonTitle: String) {
-        super.init(frame: .infinite)
-        setupChooseImageContentView(imageName: imageName, buttonTitle: buttonTitle)
-    }
     
     //Контент вью для выбора языка
     init(buttonTitle: String, languageLabel: String, buttonImage: String) {
@@ -102,37 +92,4 @@ final class LanguageAndVoice: UIView {
     func addTarget(_ target: Any, action: Selector) {
         button.addTarget(target, action: action, for: .touchUpInside)
     }
-    
-    
-    //MARK: - Выбор изображения
-    private func setupChooseImageContentView(imageName: String, buttonTitle: String) {
-        let redImageView = UIImageView(image: UIImage(named: imageName))
-        let button = UIButton(title: buttonTitle, titleColor: .custom.gray, font: 15)
-        button.addTarget(self, action: #selector(chooseImageAction), for: .touchUpInside)
-        self.backgroundColor = .clear
-        
-        self.addSubViews(redImageView, button)
-        
-        NSLayoutConstraint.activate([
-            
-            redImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22),
-            redImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            button.topAnchor.constraint(equalTo: redImageView.bottomAnchor),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -35),
-            button.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        
-        ])
-        
-    }
-    
-    @objc private func chooseImageAction() {
-        languageAndVoiceDelegate?.didTapChooseImage()
-    }
-    
-}
-
-
-protocol LanguageAndVoiceDelegate: AnyObject {
-    func didTapChooseImage()
 }

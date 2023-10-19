@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0C8EDE2AD90F01007547ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C8EDD2AD90F01007547ED /* Network.swift */; };
 		FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0963572AD427CB00909D62 /* UIColor-ext.swift */; };
 		FA4E99B92AD5A25F00E09670 /* AVKitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */; };
 		FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C0C8EDD2AD90F01007547ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FA0963572AD427CB00909D62 /* UIColor-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-ext.swift"; sourceTree = "<group>"; };
 		FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVKitProtocol.swift; sourceTree = "<group>"; };
 		FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseImageView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0C8EDC2AD90EF5007547ED /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5C0C8EDD2AD90F01007547ED /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FA4E99B72AD5A24E00E09670 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				5C0C8EDC2AD90EF5007547ED /* Network */,
 				FA4E99B72AD5A24E00E09670 /* Protocols */,
 				FA655F322ACF4D2A00799B83 /* Views */,
 				FA692A102AC072E200293B99 /* ViewController.swift */,
@@ -268,6 +279,7 @@
 			files = (
 				FA7E043E2ACC36FF0082311E /* UILabel-ext.swift in Sources */,
 				FAB0E7C12AD69829004EBC07 /* UICollectionView-ext.swift in Sources */,
+				5C0C8EDE2AD90F01007547ED /* Network.swift in Sources */,
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
