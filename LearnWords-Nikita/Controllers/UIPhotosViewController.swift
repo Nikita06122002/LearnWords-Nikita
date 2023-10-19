@@ -80,16 +80,14 @@ extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension UIPhotosViewController {
     
-    private func resultNetwork(array: [String]) {
-        self.arrayURLs = array
-        
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
     private func downloadPhotos() {
-        Network.shared.getPhotos(text: "test", completion: resultNetwork)
+        Network.shared.getPhotos(text: "test", completion: { array in
+            self.arrayURLs = array
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        })
     }
 }
 
