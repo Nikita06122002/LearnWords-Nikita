@@ -23,9 +23,21 @@ final class Network: NetworkProtocol {
     
     func getPhotos(text: String, completion: @escaping (_ array: [String]) -> Void) {
 
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
-            completion(["Первый", "Второй", "Третий", "Четвертый", "Пятый", "Шестой"])
+        var request = URLRequest(url: URL(string: "https://api.unsplash.com/search/photos?page=1&per_page=3&query=auto")!,timeoutInterval: Double.infinity)
+        request.addValue("v1", forHTTPHeaderField: "Accept-Version")
+        request.addValue("Client-ID 85ABnAZawnHPBPxNKvbrlvA3pdrDGafQzQ0x1EaEJTA", forHTTPHeaderField: "Authorization")
 
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
         }
+
+        task.resume()
+
     }
 }
