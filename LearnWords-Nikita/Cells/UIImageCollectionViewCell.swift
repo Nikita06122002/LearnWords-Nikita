@@ -8,24 +8,25 @@
 import UIKit
 
 final class UIImageCollectionViewCell: UICollectionViewCell {
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
         
-    private let label: UILabel = .init()
+    let imageView: UIImageView = .init()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         clearBackgroudColor()
-        contentView.addSubview(label)
-        label.fillConstraint()
-        label.textAlignment = .center
+        contentView.addSubview(imageView)
+        imageView.fillConstraint()
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .systemGray6
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupView(_ text: String) {
-        label.text = text
-    }
-    
 }
 

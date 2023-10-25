@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol UIPhotosViewControllerProtocol: AnyObject {
     func didSelectImage(_ image: UIImage)
@@ -13,7 +14,7 @@ protocol UIPhotosViewControllerProtocol: AnyObject {
 
 class UIPhotosViewController: ViewController {
     
-    private var arrayURLs = [" ", " ", " "]
+    private var imagesUnsplash: Unsplash?
     
     weak var delegate: UIPhotosViewControllerProtocol?
     
@@ -52,14 +53,19 @@ class UIPhotosViewController: ViewController {
 
 extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayURLs.count
+        let count = imagesUnsplash?.results.count ?? 0
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UIImageCollectionViewCell.identifier, for: indexPath) as? UIImageCollectionViewCell else { return UIImageCollectionViewCell() }
         
-        let text = arrayURLs[indexPath.item]
-        cell.setupView(text)
+        let value = imagesUnsplash?.results[indexPath.row].urls
+        
+        if let string = value?.regular, let url = URL(string: string) {
+            cell.imageView.sd_setImage(with: url)
+        } 
+        
         cell.backgroundColor = .custom.orange
         
         return cell
@@ -80,17 +86,17 @@ extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension UIPhotosViewController {
     
-    private func resultNetwork(array: [String]) {
-        self.arrayURLs = array
-        
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
     private func downloadPhotos() {
-        Network.shared.getPhotos(text: "test", completion: { array in
-            self.arrayURLs = array
+        Network.shared.getPhotos(text: "test", completion: { value, error in
+            guard let value = value else {
+                let text = error?.localizedDescription ?? "Что то пошло не так, повторите запрос заново"
+                DispatchQueue.main.async {
+                    self.alert(title: "Ошибка", message: text, actionTitle: nil)
+                }
+                return
+            }
+            
+            self.imagesUnsplash = value
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

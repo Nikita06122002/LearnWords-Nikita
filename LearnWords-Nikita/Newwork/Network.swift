@@ -21,23 +21,32 @@ final class Network: NetworkProtocol {
         test = true
     }
     
-    func getPhotos(text: String, completion: @escaping (_ array: [String]) -> Void) {
-
-        var request = URLRequest(url: URL(string: "https://api.unsplash.com/search/photos?page=1&per_page=3&query=auto")!,timeoutInterval: Double.infinity)
+    func getPhotos(text: String, completion: @escaping (Unsplash?, Error?) -> Void) {
+        
+        var request = URLRequest(url: URL(string: "https://api.unsplash.com/search/photos?page=1&per_page=30&query=auto")!,timeoutInterval: Double.infinity)
         request.addValue("v1", forHTTPHeaderField: "Accept-Version")
-        request.addValue("Client-ID 85ABnAZawnHPBPxNKvbrlvA3pdrDGafQzQ0x1EaEJTA", forHTTPHeaderField: "Authorization")
-
+        request.addValue("Client-ID \(SecretKeys.unsplash.rawValue)", forHTTPHeaderField: "Authorization")
+        
         request.httpMethod = "GET"
-
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data else {
-            print(String(describing: error))
-            return
-          }
-          print(String(data: data, encoding: .utf8)!)
+            guard let data = data else {
+                print(error?.localizedDescription ?? "--")
+                completion(nil, error)
+                return
+            }
+            let decoder = JSONDecoder()
+            
+            guard let value = try? decoder.decode(Unsplash.self, from: data) else {
+                completion(nil, error)
+                print("Opps, Плохой программист")
+                return
+            }
+            
+            completion(value, nil)
         }
-
+        
         task.resume()
-
+        
     }
 }

@@ -7,6 +7,14 @@
 
 import UIKit
 import AVKit
+import RealmSwift
+
+class Dog: Object {
+    @Persisted var name: String
+    @Persisted var age: Int
+}
+
+
 
 final class UIMainViewController: ViewController, AVKitProtocol {
     
@@ -27,6 +35,19 @@ final class UIMainViewController: ViewController, AVKitProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let realm = try! Realm()
+        print(realm.configuration.fileURL)
+        
+        let dog = Dog()
+        dog.name = "Rex"
+        dog.age = 1
+        
+        // Persist your data easily with a write transaction
+        try! realm.write {
+            realm.add(dog)
+        }
+        
+        print(realm.configuration.fileURL)
         
         setupConstraints()
         setupView()
