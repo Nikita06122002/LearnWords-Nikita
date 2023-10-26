@@ -10,11 +10,13 @@ import UIKit
 
 extension UIButton {
     
-    convenience init(title: String? = nil, titleColor: UIColor? = nil, setImage: UIImage? = nil, font: CGFloat? = nil) {
+    convenience init(title: String? = nil, titleColor: UIColor? = nil, setImage: UIImage? = nil, font: CGFloat? = nil, backgroundColor: UIColor? = nil, cornerRadius: CGFloat? = 0) {
         self.init()
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.setImage(setImage, for: .normal)
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = cornerRadius!
         if let fontSize = font {
                 self.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
             }

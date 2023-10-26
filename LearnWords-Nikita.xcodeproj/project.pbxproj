@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CF89410955B3D8B626DD477 /* Pods_LearnWords_Nikita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */; };
 		FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0963572AD427CB00909D62 /* UIColor-ext.swift */; };
+		FA2CA06C2AE994A200694803 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06B2AE994A200694803 /* SecretKeys.swift */; };
+		FA2CA06E2AE995CC00694803 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06D2AE995CC00694803 /* Unsplash.swift */; };
+		FA2CA0712AE9AB7E00694803 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FA2CA0702AE9AB7E00694803 /* Realm */; };
+		FA2CA0732AE9AB7E00694803 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA2CA0722AE9AB7E00694803 /* RealmSwift */; };
 		FA40D4C02ADA732400C89E65 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40D4BF2ADA732400C89E65 /* Network.swift */; };
 		FA4E99B92AD5A25F00E09670 /* AVKitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */; };
 		FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */; };
@@ -33,10 +38,17 @@
 		FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */; };
 		FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498D82AC57E6D004A8DF6 /* Word.swift */; };
 		FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */; };
+		FAE926C62AEACF5600662D73 /* UITextField-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE926C52AEACF5600662D73 /* UITextField-ext.swift */; };
+		FAE926C82AEAD11800662D73 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE926C72AEAD11800662D73 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearnWords_Nikita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9823A32FD1B513418F4B0A3D /* Pods-LearnWords-Nikita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnWords-Nikita.release.xcconfig"; path = "Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita.release.xcconfig"; sourceTree = "<group>"; };
+		E8B1344884D87E32737AB2E7 /* Pods-LearnWords-Nikita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnWords-Nikita.debug.xcconfig"; path = "Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0963572AD427CB00909D62 /* UIColor-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-ext.swift"; sourceTree = "<group>"; };
+		FA2CA06B2AE994A200694803 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
+		FA2CA06D2AE995CC00694803 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
 		FA40D4BF2ADA732400C89E65 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVKitProtocol.swift; sourceTree = "<group>"; };
 		FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseImageView.swift; sourceTree = "<group>"; };
@@ -64,6 +76,8 @@
 		FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		FAE498D82AC57E6D004A8DF6 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewContoller.swift; sourceTree = "<group>"; };
+		FAE926C52AEACF5600662D73 /* UITextField-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField-ext.swift"; sourceTree = "<group>"; };
+		FAE926C72AEAD11800662D73 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +85,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2CA0732AE9AB7E00694803 /* RealmSwift in Frameworks */,
+				FA2CA0712AE9AB7E00694803 /* Realm in Frameworks */,
+				7CF89410955B3D8B626DD477 /* Pods_LearnWords_Nikita.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6D23C3C5B57403A8237314E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F73382A84BAA149371C25095 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8B1344884D87E32737AB2E7 /* Pods-LearnWords-Nikita.debug.xcconfig */,
+				9823A32FD1B513418F4B0A3D /* Pods-LearnWords-Nikita.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA2CA06A2AE9948E00694803 /* SecretKeys */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CA06B2AE994A200694803 /* SecretKeys.swift */,
+			);
+			path = SecretKeys;
+			sourceTree = "<group>";
+		};
 		FA40D4BE2ADA731400C89E65 /* Newwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +142,7 @@
 				FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */,
 				FAE3E7932AD2C5CA006B8AFD /* LanguageAndVoice.swift */,
 				FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */,
+				FAE926C72AEAD11800662D73 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +152,8 @@
 			children = (
 				FA692A0B2AC072E200293B99 /* LearnWords-Nikita */,
 				FA692A0A2AC072E200293B99 /* Products */,
+				F73382A84BAA149371C25095 /* Pods */,
+				B6D23C3C5B57403A8237314E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +168,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				FA2CA06A2AE9948E00694803 /* SecretKeys */,
 				FA40D4BE2ADA731400C89E65 /* Newwork */,
 				FA4E99B72AD5A24E00E09670 /* Protocols */,
 				FA655F322ACF4D2A00799B83 /* Views */,
@@ -150,6 +196,7 @@
 				FAB0E7BC2AD695AE004EBC07 /* UICollectionViewCell-ext.swift */,
 				FAB0E7BE2AD6978F004EBC07 /* UITableView-ext.swift */,
 				FAB0E7C02AD69829004EBC07 /* UICollectionView-ext.swift */,
+				FAE926C52AEACF5600662D73 /* UITextField-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -203,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				FAE498D82AC57E6D004A8DF6 /* Word.swift */,
+				FA2CA06D2AE995CC00694803 /* Unsplash.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,15 +262,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA692A1D2AC072E300293B99 /* Build configuration list for PBXNativeTarget "LearnWords-Nikita" */;
 			buildPhases = (
+				5E4D82358D6505E3CCF51001 /* [CP] Check Pods Manifest.lock */,
 				FA692A052AC072E200293B99 /* Sources */,
 				FA692A062AC072E200293B99 /* Frameworks */,
 				FA692A072AC072E200293B99 /* Resources */,
+				A7A836E0337C675402AA7244 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "LearnWords-Nikita";
+			packageProductDependencies = (
+				FA2CA0702AE9AB7E00694803 /* Realm */,
+				FA2CA0722AE9AB7E00694803 /* RealmSwift */,
+			);
 			productName = "LearnWords-Nikita";
 			productReference = FA692A092AC072E200293B99 /* LearnWords-Nikita.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +305,9 @@
 				Base,
 			);
 			mainGroup = FA692A002AC072E200293B99;
+			packageReferences = (
+				FA2CA06F2AE9AB7E00694803 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = FA692A0A2AC072E200293B99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,6 +329,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E4D82358D6505E3CCF51001 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LearnWords-Nikita-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7A836E0337C675402AA7244 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA692A052AC072E200293B99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -292,6 +391,7 @@
 				FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */,
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
+				FA2CA06E2AE995CC00694803 /* Unsplash.swift in Sources */,
 				FAB0E7BF2AD6978F004EBC07 /* UITableView-ext.swift in Sources */,
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
@@ -300,7 +400,10 @@
 				FA4E99BD2AD5AC3200E09670 /* ChooseImageViewProtocol.swift in Sources */,
 				FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */,
 				FA4E99BF2AD5BA4300E09670 /* UIPhotosViewController.swift in Sources */,
+				FAE926C82AEAD11800662D73 /* SearchView.swift in Sources */,
 				FA4E99B92AD5A25F00E09670 /* AVKitProtocol.swift in Sources */,
+				FAE926C62AEACF5600662D73 /* UITextField-ext.swift in Sources */,
+				FA2CA06C2AE994A200694803 /* SecretKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,12 +542,14 @@
 		};
 		FA692A1E2AC072E300293B99 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8B1344884D87E32737AB2E7 /* Pods-LearnWords-Nikita.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ETPBABNPCF;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -469,12 +574,14 @@
 		};
 		FA692A1F2AC072E300293B99 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9823A32FD1B513418F4B0A3D /* Pods-LearnWords-Nikita.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ETPBABNPCF;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LearnWords-Nikita/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -519,6 +626,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA2CA06F2AE9AB7E00694803 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.43.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA2CA0702AE9AB7E00694803 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2CA06F2AE9AB7E00694803 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		FA2CA0722AE9AB7E00694803 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2CA06F2AE9AB7E00694803 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA692A012AC072E200293B99 /* Project object */;
 }
