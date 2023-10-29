@@ -114,7 +114,8 @@ extension UIPhotosViewController {
     private func downloadPhotos(searchText: String?) {
         Network.shared.getPhotos(text: searchText ?? "Default", completion: { value, error in
             guard let value = value else {
-                let text = error?.localizedDescription ?? "Что-то пошло не так в downloadPhotos"
+                let text = error?.description
+                
                 DispatchQueue.main.async {
                     self.alert(title: "Ошибка", message: text, actionTitle: nil)
                 }

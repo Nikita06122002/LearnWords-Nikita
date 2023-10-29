@@ -7,37 +7,34 @@
 
 import UIKit
 import AVKit
-import RealmSwift
 
 final class UIMainViewController: ViewController, AVKitProtocol {
     
     var synthesizer: AVSpeechSynthesizer!
     
-    private let words = RealmManager.shared.realm.objects(Word.self)
+    private var words: [Word] = RealmManager.shared.words
     
     private var tableView = UITableView(backgroungColor: .clear)
     private var rightBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupConstraints()
         setupView()
-        
-        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
+        setupTableView()
         print(RealmManager.shared.realm.configuration.fileURL)
     }
     
+    private func setupTableView() {
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     private func setupConstraints() {
-        view.addSubview(tableView)
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubViews(tableView)
         
         NSLayoutConstraint.activate([
-            
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 33),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
@@ -91,15 +88,7 @@ extension UIMainViewController: UITableViewDataSource {
             cell.setPlayButtonTag(indexPath.row)
             cell.addTarget(self, action: #selector(playButtonAction(_:)))
         }
-        
-        
         return cell
-    }
-    
-    
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
     
     
@@ -107,34 +96,24 @@ extension UIMainViewController: UITableViewDataSource {
     @objc private func playButtonAction(_ sender: UIButton) {
         
         let row = sender.tag
-        let word = RealmManager.shared.realm.objects(Word.self)[row]
+        let word = words[row]
         alert(title: word.title, message: word.translate, actionTitle: "Воспроизвести") { _ in
             self.playSound(word.title, language: "en-US")
         }
     }
-    
 }
 
 extension UIMainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, completion in
-            do {
-                let wordToDelete = RealmManager.shared.realm.objects(Word.self)[indexPath.row]
-                try RealmManager.shared.realm.write{
-                    RealmManager.shared.realm.delete(wordToDelete)
-                }
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                completion(true)
-
-            }
-            
-            catch {
-                print("Error in delete rows: \(error)")
-                completion(false)
-            }
-
+            let word = self.words[indexPath.row]
+            RealmManager.shared.delete(word: word)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            completion(true)
+            tableView.reloadData()
         }
+        
         delete.backgroundColor = .custom.red
         delete.image = UIImage(systemName: "xmark")
         return UISwipeActionsConfiguration(actions: [delete])
@@ -142,49 +121,27 @@ extension UIMainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < words.count {
-            let selectedRow = RealmManager.shared.realm.objects(Word.self)[indexPath.row]
+            let selectedRow = words[indexPath.row]
             let vc = NewWordViewContoller()
             vc.delegate = self
             vc.currentWord = selectedRow
-            vc.currentIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
 
         }
     }
-    
-    
 }
 
 extension UIMainViewController: NewWordDelegate {
-    func didUpdateWord(word: Word, at index: Int) {
-        if index < words.count {
-            do {
-                try RealmManager.shared.realm.write{
-                    let existingWord = RealmManager.shared.realm.objects(Word.self)[index]
-                    existingWord.translate = word.translate
-                }
-            }
-            catch {
-                print("Error with update word: \(error)")
-            }
-        } else {
-            print("index out of bounds")
-        }
+    func didUpdateWord(word: Word) {
+        RealmManager.shared.edit(word: word)
+        words = RealmManager.shared.words
+        tableView.reloadData()
     }
     
     func didSaveNewWord(word: Word) {
-        
-        do {
-            try RealmManager.shared.realm.write{
-                RealmManager.shared.realm.add(word)
-            }
-            let indexPath = IndexPath(row: RealmManager.shared.realm.objects(Word.self).count - 1, section: 0)
-            tableView.insertRows(at: [indexPath], with: .fade)
-        }
-        catch {
-            print("Error in didSaveNewWord: \(error)")
-        }
-        
+        RealmManager.shared.save(word: word)
+        words = RealmManager.shared.words
+        tableView.reloadData()
     }
 }
 
