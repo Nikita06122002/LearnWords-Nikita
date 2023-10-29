@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CF89410955B3D8B626DD477 /* Pods_LearnWords_Nikita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */; };
+		FA0745962AEC4737008699FF /* RealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0745952AEC4737008699FF /* RealManager.swift */; };
 		FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0963572AD427CB00909D62 /* UIColor-ext.swift */; };
 		FA2CA06C2AE994A200694803 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06B2AE994A200694803 /* SecretKeys.swift */; };
 		FA2CA06E2AE995CC00694803 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06D2AE995CC00694803 /* Unsplash.swift */; };
@@ -46,6 +47,7 @@
 		765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearnWords_Nikita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9823A32FD1B513418F4B0A3D /* Pods-LearnWords-Nikita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnWords-Nikita.release.xcconfig"; path = "Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita.release.xcconfig"; sourceTree = "<group>"; };
 		E8B1344884D87E32737AB2E7 /* Pods-LearnWords-Nikita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnWords-Nikita.debug.xcconfig"; path = "Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0745952AEC4737008699FF /* RealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealManager.swift; sourceTree = "<group>"; };
 		FA0963572AD427CB00909D62 /* UIColor-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-ext.swift"; sourceTree = "<group>"; };
 		FA2CA06B2AE994A200694803 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		FA2CA06D2AE995CC00694803 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA0745942AEC471D008699FF /* Singlton */ = {
+			isa = PBXGroup;
+			children = (
+				FA0745952AEC4737008699FF /* RealManager.swift */,
+			);
+			path = Singlton;
+			sourceTree = "<group>";
+		};
 		FA2CA06A2AE9948E00694803 /* SecretKeys */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		FA692A0B2AC072E200293B99 /* LearnWords-Nikita */ = {
 			isa = PBXGroup;
 			children = (
+				FA0745942AEC471D008699FF /* Singlton */,
 				FA2CA06A2AE9948E00694803 /* SecretKeys */,
 				FA40D4BE2ADA731400C89E65 /* Newwork */,
 				FA4E99B72AD5A24E00E09670 /* Protocols */,
@@ -396,6 +407,7 @@
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
 				FAB0E7BB2AD69510004EBC07 /* UIImageCollectionViewCell.swift in Sources */,
+				FA0745962AEC4737008699FF /* RealManager.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
 				FA4E99BD2AD5AC3200E09670 /* ChooseImageViewProtocol.swift in Sources */,
 				FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */,

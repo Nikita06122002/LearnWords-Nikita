@@ -64,7 +64,6 @@ final class NewWordViewContoller: ViewController, AVKitProtocol {
         whiteView.addSubViews(stackView)
         
         setupConstraints()
-        setupNavigationBar()
         setupView()
         
         playButtonView.addTarget(self, action: #selector(playButtonAction))
@@ -76,9 +75,6 @@ final class NewWordViewContoller: ViewController, AVKitProtocol {
     }
 
     
-    private func setupNavigationBar() {
-        
-    }
     
     private func setupConstraints() {
         
@@ -130,13 +126,19 @@ final class NewWordViewContoller: ViewController, AVKitProtocol {
         let title = titleContentView.text ?? ""
         let translate = translateContentView.text ?? ""
         
-        let word = Word(title: title, translate: translate)
-        if let index = currentIndex {
-            delegate?.didUpdateWord(word: word, at: index)
+        if !title.isEmpty && !translate.isEmpty {
+            let word = Word()
+            word.title = title
+            word.translate = translate
+            if let index = currentIndex {
+                delegate?.didUpdateWord(word: word, at: index)
+            } else {
+                delegate?.didSaveNewWord(word: word)
+            }
+            navigationController?.popViewController(animated: true)
         } else {
-            delegate?.didSaveNewWord(word: word)
+            alert(title: "Внимание!", message: "Заполниите оба поля!", actionTitle: "ОК")
         }
-        navigationController?.popViewController(animated: true)
         
     }
     

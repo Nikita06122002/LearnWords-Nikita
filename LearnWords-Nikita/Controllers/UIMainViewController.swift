@@ -9,31 +9,17 @@ import UIKit
 import AVKit
 import RealmSwift
 
-class Dog: Object {
-    @Persisted var name: String
-    @Persisted var age: Int
-}
-
 final class UIMainViewController: ViewController, AVKitProtocol {
     
     var synthesizer: AVSpeechSynthesizer!
     
-
-    private var array: [Word] = [Word(title: "Hello", translate: "Привет"),
-                         Word(title: "House", translate: "Дом"),
-                         Word(title: "Winter", translate: "Зима"),
-                         Word(title: "Book", translate: "Книга"),
-                         Word(title: "Island", translate: "Остров"),
-                         Word(title: "Car", translate: "Машина"),
-                         Word(title: "Street", translate: "Улица")
-    ]
+    private let words = RealmManager.shared.realm.objects(Word.self)
     
     private var tableView = UITableView(backgroungColor: .clear)
     private var rightBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
 
         setupConstraints()
         setupView()
@@ -42,15 +28,7 @@ final class UIMainViewController: ViewController, AVKitProtocol {
         
         tableView.dataSource = self
         tableView.delegate = self
-        print(realm.configuration.fileURL)
-        let dog = Dog()
-        dog.name = "Rex"
-        dog.age = 1
-        
-        
-        try! realm.write {
-            realm.add(dog)
-        }
+        print(RealmManager.shared.realm.configuration.fileURL)
     }
     
     private func setupConstraints() {
@@ -98,31 +76,38 @@ extension UIMainViewController {
 //MARK: - Table View Data Source
 extension UIMainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as? MainTableViewCell else {
             return UITableViewCell()
         }
-        
-        let row = indexPath.row
-        let word = array[row]
-        cell.setupView(word: word)
-        cell.addTarget(self, action: #selector(playButtonAction(_:)))
+            
+        if indexPath.row < words.count {
+            
+            let word = words[indexPath.row]
+            cell.setupView(word: word)
+            cell.setPlayButtonTag(indexPath.row)
+            cell.addTarget(self, action: #selector(playButtonAction(_:)))
+        }
         
         
         return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    
+    
     @objc private func playButtonAction(_ sender: UIButton) {
         
         let row = sender.tag
-        let word = array[row]
+        let word = RealmManager.shared.realm.objects(Word.self)[row]
         alert(title: word.title, message: word.translate, actionTitle: "Воспроизвести") { _ in
             self.playSound(word.title, language: "en-US")
         }
@@ -133,10 +118,22 @@ extension UIMainViewController: UITableViewDataSource {
 extension UIMainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
-            self.array.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, completion in
+            do {
+                let wordToDelete = RealmManager.shared.realm.objects(Word.self)[indexPath.row]
+                try RealmManager.shared.realm.write{
+                    RealmManager.shared.realm.delete(wordToDelete)
+                }
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                completion(true)
+
+            }
+            
+            catch {
+                print("Error in delete rows: \(error)")
+                completion(false)
+            }
+
         }
         delete.backgroundColor = .custom.red
         delete.image = UIImage(systemName: "xmark")
@@ -144,12 +141,15 @@ extension UIMainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedRow = array[indexPath.row]
-        let vc = NewWordViewContoller()
-        vc.delegate = self
-        vc.currentWord = selectedRow
-        vc.currentIndex = indexPath.row
-        navigationController?.pushViewController(vc, animated: true)
+        if indexPath.row < words.count {
+            let selectedRow = RealmManager.shared.realm.objects(Word.self)[indexPath.row]
+            let vc = NewWordViewContoller()
+            vc.delegate = self
+            vc.currentWord = selectedRow
+            vc.currentIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+
+        }
     }
     
     
@@ -157,13 +157,34 @@ extension UIMainViewController: UITableViewDelegate {
 
 extension UIMainViewController: NewWordDelegate {
     func didUpdateWord(word: Word, at index: Int) {
-        array[index] = word
-        tableView.reloadData()
+        if index < words.count {
+            do {
+                try RealmManager.shared.realm.write{
+                    let existingWord = RealmManager.shared.realm.objects(Word.self)[index]
+                    existingWord.translate = word.translate
+                }
+            }
+            catch {
+                print("Error with update word: \(error)")
+            }
+        } else {
+            print("index out of bounds")
+        }
     }
     
     func didSaveNewWord(word: Word) {
-        array.append(word)
-        tableView.reloadData()
+        
+        do {
+            try RealmManager.shared.realm.write{
+                RealmManager.shared.realm.add(word)
+            }
+            let indexPath = IndexPath(row: RealmManager.shared.realm.objects(Word.self).count - 1, section: 0)
+            tableView.insertRows(at: [indexPath], with: .fade)
+        }
+        catch {
+            print("Error in didSaveNewWord: \(error)")
+        }
+        
     }
 }
 

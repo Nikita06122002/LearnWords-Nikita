@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Word {
-    let title: String
-    let translate: String
+class Word: Object {
+    @objc dynamic var title = ""
+    @objc dynamic var translate = ""
+    
+//    override static func primaryKey() -> String? {
+//        return "title"
+//    }
+//    
+//    override static func indexedProperties() -> [String] {
+//        return ["title", "translate"]
+//    }
 }

@@ -62,6 +62,10 @@ final class MainTableViewCell: UITableViewCell {
         playButton.addTarget(target, action: action, for: .touchUpInside)
     }
     
+    func setPlayButtonTag(_ tag: Int) {
+        playButton.tag = tag
+    }
+    
 }
 
 
