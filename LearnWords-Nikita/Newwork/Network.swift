@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol NetworkProtocol {
-    var test: Bool { get }
-    //    func getData()
-}
-
 final class Network: NetworkProtocol {
     
     var test: Bool
@@ -21,33 +16,36 @@ final class Network: NetworkProtocol {
         test = true
     }
     
-    func getPhotos(text: String, completion: @escaping (Unsplash?, Error?) -> Void) {
-        
-        let urlString = "https://api.unsplash.com/search/photos?page=1&per_page=30&query=\(text)"
+    func getPhotos(text: String, completion: @escaping (Unsplash?, NetworkError?) -> Void) {
+        let api = Api.downloadImage(string: text)
+        let string = api.path
           
-          // Создайте URL из строки
-          guard let url = URL(string: urlString) else {
+          // Создание URL из строки
+          guard let url = URL(string: string) else {
               print("Ошибка создания URL")
+              completion(nil, .notFoundUrl)
               return
           }
         
-        var request = URLRequest(url: url,timeoutInterval: Double.infinity)
-        request.addValue("v1", forHTTPHeaderField: "Accept-Version")
-        request.addValue("Client-ID \(SecretKeys.unsplash.rawValue)", forHTTPHeaderField: "Authorization")
+        var request = URLRequest(url: url,timeoutInterval: 10.0)
         
-        request.httpMethod = "GET"
+        api.header.forEach { (key: String, value: String) in
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        
+        request.httpMethod = api.method
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "--")
                 print(String(describing: error))
-                completion(nil, error)
+                completion(nil, .error(error))
                 return
             }
             let decode = JSONDecoder()
             
             guard let value = try? decode.decode(Unsplash.self, from: data) else {
-                completion(nil, error)
+                completion(nil, .error(error))
                 print("Ошибка в getPhotos")
                 return
             }

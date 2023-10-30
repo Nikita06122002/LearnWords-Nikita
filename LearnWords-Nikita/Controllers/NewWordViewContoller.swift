@@ -8,18 +8,11 @@
 import UIKit
 import AVKit
 
-protocol NewWordDelegate: AnyObject {
-    func didSaveNewWord(word: Word)
-    func didUpdateWord(word: Word, at index: Int)
-    
-}
-
 final class NewWordViewContoller: ViewController, AVKitProtocol {
     var synthesizer: AVSpeechSynthesizer!
     
     
     var currentWord: Word?
-    var currentIndex: Int?
     
     weak var delegate: NewWordDelegate?
     
@@ -126,21 +119,28 @@ final class NewWordViewContoller: ViewController, AVKitProtocol {
         let title = titleContentView.text ?? ""
         let translate = translateContentView.text ?? ""
         
-        if !title.isEmpty && !translate.isEmpty {
-            let word = Word()
-            word.title = title
-            word.translate = translate
-            if let index = currentIndex {
-                delegate?.didUpdateWord(word: word, at: index)
-            } else {
-                delegate?.didSaveNewWord(word: word)
-            }
-            navigationController?.popViewController(animated: true)
-        } else {
+        guard let title = titleContentView.text, let translate = translateContentView.text,
+              !title.isEmpty, !translate.isEmpty else {
             alert(title: "Внимание!", message: "Заполниите оба поля!", actionTitle: "ОК")
+            return
         }
         
-    }
+            if let edit = currentWord {
+                let word = Word()
+                word._id = edit._id
+                word.title = title
+                word.translate = translate
+                delegate?.didUpdateWord(word: word)
+            } else  {
+                let word = Word()
+                word.title = title
+                word.translate = translate
+                delegate?.didSaveNewWord(word: word)
+                
+            }
+            navigationController?.popViewController(animated: true)
+            
+        }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

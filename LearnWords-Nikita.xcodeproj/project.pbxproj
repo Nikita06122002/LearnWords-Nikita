@@ -41,6 +41,12 @@
 		FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */; };
 		FAE926C62AEACF5600662D73 /* UITextField-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE926C52AEACF5600662D73 /* UITextField-ext.swift */; };
 		FAE926C82AEAD11800662D73 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE926C72AEAD11800662D73 /* SearchView.swift */; };
+		FAFFB1EB2AEFB61B009DC689 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1EA2AEFB61B009DC689 /* Api.swift */; };
+		FAFFB1ED2AEFBBC9009DC689 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1EC2AEFBBC9009DC689 /* NetworkError.swift */; };
+		FAFFB1EF2AEFBBF2009DC689 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1EE2AEFBBF2009DC689 /* NetworkProtocol.swift */; };
+		FAFFB1F12AEFBC1D009DC689 /* SearchViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1F02AEFBC1D009DC689 /* SearchViewDelegate.swift */; };
+		FAFFB1F32AEFBC55009DC689 /* NewWordDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1F22AEFBC55009DC689 /* NewWordDelegate.swift */; };
+		FAFFB1F52AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFB1F42AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +86,12 @@
 		FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewContoller.swift; sourceTree = "<group>"; };
 		FAE926C52AEACF5600662D73 /* UITextField-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField-ext.swift"; sourceTree = "<group>"; };
 		FAE926C72AEAD11800662D73 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FAFFB1EA2AEFB61B009DC689 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		FAFFB1EC2AEFBBC9009DC689 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FAFFB1EE2AEFBBF2009DC689 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		FAFFB1F02AEFBC1D009DC689 /* SearchViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDelegate.swift; sourceTree = "<group>"; };
+		FAFFB1F22AEFBC55009DC689 /* NewWordDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordDelegate.swift; sourceTree = "<group>"; };
+		FAFFB1F42AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPhotosViewControllerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +144,7 @@
 		FA40D4BE2ADA731400C89E65 /* Newwork */ = {
 			isa = PBXGroup;
 			children = (
+				FAFFB1E92AEFB611009DC689 /* Setup */,
 				FA40D4BF2ADA732400C89E65 /* Network.swift */,
 			);
 			path = Newwork;
@@ -142,6 +155,10 @@
 			children = (
 				FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */,
 				FA4E99BC2AD5AC3200E09670 /* ChooseImageViewProtocol.swift */,
+				FAFFB1EE2AEFBBF2009DC689 /* NetworkProtocol.swift */,
+				FAFFB1F02AEFBC1D009DC689 /* SearchViewDelegate.swift */,
+				FAFFB1F22AEFBC55009DC689 /* NewWordDelegate.swift */,
+				FAFFB1F42AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -183,7 +200,6 @@
 				FA40D4BE2ADA731400C89E65 /* Newwork */,
 				FA4E99B72AD5A24E00E09670 /* Protocols */,
 				FA655F322ACF4D2A00799B83 /* Views */,
-				FA692A102AC072E200293B99 /* ViewController.swift */,
 				FAD5D0362AC61990002A3B19 /* Extension */,
 				FAE498D72AC57E5D004A8DF6 /* Model */,
 				FAE498D42AC57A90004A8DF6 /* Cells */,
@@ -241,6 +257,7 @@
 		FAE498D12AC56E68004A8DF6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA692A102AC072E200293B99 /* ViewController.swift */,
 				FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */,
 				FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */,
 				FA4E99BE2AD5BA4300E09670 /* UIPhotosViewController.swift */,
@@ -264,6 +281,15 @@
 				FA2CA06D2AE995CC00694803 /* Unsplash.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAFFB1E92AEFB611009DC689 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				FAFFB1EA2AEFB61B009DC689 /* Api.swift */,
+				FAFFB1EC2AEFBBC9009DC689 /* NetworkError.swift */,
+			);
+			path = Setup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,21 +418,27 @@
 				FA40D4C02ADA732400C89E65 /* Network.swift in Sources */,
 				FA692A112AC072E200293B99 /* ViewController.swift in Sources */,
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
+				FAFFB1ED2AEFBBC9009DC689 /* NetworkError.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
+				FAFFB1F32AEFBC55009DC689 /* NewWordDelegate.swift in Sources */,
 				FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */,
 				FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */,
 				FAE3E7942AD2C5CA006B8AFD /* LanguageAndVoice.swift in Sources */,
 				FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */,
 				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
+				FAFFB1EF2AEFBBF2009DC689 /* NetworkProtocol.swift in Sources */,
 				FAB0E7BD2AD695AE004EBC07 /* UICollectionViewCell-ext.swift in Sources */,
 				FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */,
 				FAE498D62AC57AA7004A8DF6 /* MainTableViewCell.swift in Sources */,
 				FAE498D92AC57E6D004A8DF6 /* Word.swift in Sources */,
+				FAFFB1F52AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift in Sources */,
 				FA2CA06E2AE995CC00694803 /* Unsplash.swift in Sources */,
 				FAB0E7BF2AD6978F004EBC07 /* UITableView-ext.swift in Sources */,
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
+				FAFFB1EB2AEFB61B009DC689 /* Api.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
 				FAB0E7BB2AD69510004EBC07 /* UIImageCollectionViewCell.swift in Sources */,
+				FAFFB1F12AEFBC1D009DC689 /* SearchViewDelegate.swift in Sources */,
 				FA0745962AEC4737008699FF /* RealManager.swift in Sources */,
 				FAE498DB2AC57EBF004A8DF6 /* NewWordViewContoller.swift in Sources */,
 				FA4E99BD2AD5AC3200E09670 /* ChooseImageViewProtocol.swift in Sources */,

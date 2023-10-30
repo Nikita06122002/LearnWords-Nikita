@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol SearchViewDelegate: AnyObject {
-    func didPressSearchButton(text: String?)
-}
-
 final class SearchView: UIView {
     weak var delegate: SearchViewDelegate?
     

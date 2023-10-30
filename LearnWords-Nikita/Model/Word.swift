@@ -9,14 +9,9 @@ import Foundation
 import RealmSwift
 
 class Word: Object {
-    @objc dynamic var title = ""
-    @objc dynamic var translate = ""
     
-//    override static func primaryKey() -> String? {
-//        return "title"
-//    }
-//    
-//    override static func indexedProperties() -> [String] {
-//        return ["title", "translate"]
-//    }
+    @Persisted(primaryKey: true) var _id: String = UUID().uuidString
+    @Persisted var title = ""
+    @Persisted var translate = ""
+
 }
