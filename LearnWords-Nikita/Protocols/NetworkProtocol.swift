@@ -8,6 +8,5 @@
 import Foundation
 
 protocol NetworkProtocol {
-    var test: Bool { get }
-    //    func getData()
+    func getPhotos(text: String, completion: @escaping (Unsplash?, NetworkError?) -> Void)
 }

@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .custom.white
-
     }
     
     func alert(title: String?, message: String?, actionTitle: String?, action: ((UIAlertAction) -> Void)? = nil) {

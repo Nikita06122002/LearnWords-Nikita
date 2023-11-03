@@ -28,6 +28,20 @@ final class UIMainViewController: ViewController, AVKitProtocol {
         tableView.dataSource = self
         tableView.delegate = self
         //        print(RealmManager.shared.realm.configuration.fileURL)
+        
+        let familyNames = UIFont.familyNames
+        
+        for forFamilyName in familyNames {
+            let array = UIFont.fontNames(forFamilyName: forFamilyName)
+            
+            print(forFamilyName, ":")
+            
+            for name in array {
+                print("   ", name)
+            }
+            
+            print("\n\n")
+        }
     }
     
     private func setupConstraints() {
