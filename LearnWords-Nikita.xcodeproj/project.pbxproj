@@ -24,6 +24,7 @@
 		FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */; };
 		FA4E99BD2AD5AC3200E09670 /* ChooseImageViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BC2AD5AC3200E09670 /* ChooseImageViewProtocol.swift */; };
 		FA4E99BF2AD5BA4300E09670 /* UIPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BE2AD5BA4300E09670 /* UIPhotosViewController.swift */; };
+		FA56ADA42AF928EA00C2A444 /* AddMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56ADA32AF928EA00C2A444 /* AddMainCollectionViewCell.swift */; };
 		FA655F312ACF360B00799B83 /* UITableViewCell-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */; };
 		FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */; };
 		FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA692A0C2AC072E200293B99 /* AppDelegate.swift */; };
@@ -72,6 +73,7 @@
 		FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseImageView.swift; sourceTree = "<group>"; };
 		FA4E99BC2AD5AC3200E09670 /* ChooseImageViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewProtocol.swift; sourceTree = "<group>"; };
 		FA4E99BE2AD5BA4300E09670 /* UIPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPhotosViewController.swift; sourceTree = "<group>"; };
+		FA56ADA32AF928EA00C2A444 /* AddMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA655F302ACF360B00799B83 /* UITableViewCell-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell-ext.swift"; sourceTree = "<group>"; };
 		FA655F332ACF4D4100799B83 /* UIEditWordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEditWordTextField.swift; sourceTree = "<group>"; };
 		FA692A092AC072E200293B99 /* LearnWords-Nikita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LearnWords-Nikita.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,24 @@
 				FAFFB1F42AEFBC75009DC689 /* UIPhotosViewControllerProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FA56ADA52AF928ED00C2A444 /* MainControllerCells */ = {
+			isa = PBXGroup;
+			children = (
+				FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */,
+				FA56ADA32AF928EA00C2A444 /* AddMainCollectionViewCell.swift */,
+				FA38D1DB2AF8F94000C48505 /* MainCollectionViewCell.swift */,
+			);
+			path = MainControllerCells;
+			sourceTree = "<group>";
+		};
+		FA56ADA62AF929FE00C2A444 /* UIPhotosControllerCells */ = {
+			isa = PBXGroup;
+			children = (
+				FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */,
+			);
+			path = UIPhotosControllerCells;
 			sourceTree = "<group>";
 		};
 		FA655F322ACF4D2A00799B83 /* Views */ = {
@@ -280,9 +300,8 @@
 		FAE498D42AC57A90004A8DF6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */,
-				FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */,
-				FA38D1DB2AF8F94000C48505 /* MainCollectionViewCell.swift */,
+				FA56ADA62AF929FE00C2A444 /* UIPhotosControllerCells */,
+				FA56ADA52AF928ED00C2A444 /* MainControllerCells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -435,6 +454,7 @@
 				FA692A0D2AC072E200293B99 /* AppDelegate.swift in Sources */,
 				FAFFB1ED2AEFBBC9009DC689 /* NetworkError.swift in Sources */,
 				FAD5D03A2AC61AD3002A3B19 /* UIStackView-ext.swift in Sources */,
+				FA56ADA42AF928EA00C2A444 /* AddMainCollectionViewCell.swift in Sources */,
 				FAFFB1F32AEFBC55009DC689 /* NewWordDelegate.swift in Sources */,
 				FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */,
 				FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */,

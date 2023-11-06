@@ -29,6 +29,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         let smallestSide = min(image.frame.size.width, image.frame.size.height)
         image.layer.cornerRadius = smallestSide/2
         image.clipsToBounds = true
+        image.backgroundColor = .orange
         let stackView = UIStackView(.vertical, 1, .center, .fill, [image, titleLabel ,translateLabel])
         
         contentView.addSubViews(stackView)

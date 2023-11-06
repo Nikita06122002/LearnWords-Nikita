@@ -23,10 +23,11 @@ class UIMainCollectionController: ViewController {
         setupView()
         
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collectionView.register(AddMainCollectionViewCell.self, forCellWithReuseIdentifier: AddMainCollectionViewCell.identifier)
         
         collectionView.dataSource = self
         collectionView.delegate = self
-                print(RealmManager.shared.realm.configuration.fileURL)
+        print(RealmManager.shared.realm.configuration.fileURL)
     }
     
     private func setupConstraints() {
@@ -69,42 +70,33 @@ extension UIMainCollectionController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-
-  
+    
+    
 }
 
 extension UIMainCollectionController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return words.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
-//            return UICollectionViewCell()
-//        }
-//        
-//        if indexPath.row < words.count {
-//            
-//            let word = words[indexPath.row]
-//            cell.setupView(word: word)
-//        }
-//        
-//        
-//        return cell
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words.count
+        return words.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else { return MainCollectionViewCell() }
         
-        let word = words[indexPath.item]
-        cell.setupView(word: word)
+        if indexPath.row == words.count {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddMainCollectionViewCell.identifier, for: indexPath) as? AddMainCollectionViewCell else { 
+                return AddMainCollectionViewCell()
+            }
+            cell.addTarget(self, action: #selector(barItemAction))
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
+                return MainCollectionViewCell()
+            }
+            let word = words[indexPath.item]
+            cell.setupView(word: word)
+            return cell
+        }
         
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -120,7 +112,7 @@ extension UIMainCollectionController: UICollectionViewDataSource, UICollectionVi
 }
 
 extension UIMainCollectionController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < words.count {
             let selectedRow = words[indexPath.row]
@@ -129,6 +121,10 @@ extension UIMainCollectionController: UICollectionViewDelegate {
             vc.currentWord = selectedRow
             navigationController?.pushViewController(vc, animated: true)
             
+        } else if indexPath.row == words.count {
+            let vc = NewWordViewContoller()
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -149,4 +145,29 @@ extension UIMainCollectionController: NewWordDelegate {
     }
 }
 
-
+//MARK: - SwiftUI
+import SwiftUI
+struct UIMainCollectionController_Provider : PreviewProvider {
+    static var previews: some View {
+        ContainterView().edgesIgnoringSafeArea(.all)
+    }
+    
+    struct ContainterView: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return UIMainCollectionController()
+        }
+        
+        typealias UIViewControllerType = UIViewController
+        
+        
+        let viewController = UIMainCollectionController()
+        func makeUIViewController(context: UIViewControllerRepresentableContext<UIMainCollectionController_Provider.ContainterView>) -> UIMainCollectionController {
+            return viewController
+        }
+        
+        func updateUIViewController(_ uiViewController: UIMainCollectionController_Provider.ContainterView.UIViewControllerType, context: UIViewControllerRepresentableContext<UIMainCollectionController_Provider.ContainterView>) {
+            
+        }
+    }
+    
+}
