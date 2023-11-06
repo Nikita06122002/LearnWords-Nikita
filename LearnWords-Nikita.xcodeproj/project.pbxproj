@@ -10,10 +10,15 @@
 		7CF89410955B3D8B626DD477 /* Pods_LearnWords_Nikita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765308CFA249B01DA730B1FE /* Pods_LearnWords_Nikita.framework */; };
 		FA0745962AEC4737008699FF /* RealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0745952AEC4737008699FF /* RealManager.swift */; };
 		FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0963572AD427CB00909D62 /* UIColor-ext.swift */; };
+		FA15DEC72AF7979E00AB2798 /* Unsplash-Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15DEC62AF7979E00AB2798 /* Unsplash-Network.swift */; };
+		FA15DEC92AF79A3B00AB2798 /* ResultNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15DEC82AF79A3B00AB2798 /* ResultNetwork.swift */; };
 		FA2CA06C2AE994A200694803 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06B2AE994A200694803 /* SecretKeys.swift */; };
 		FA2CA06E2AE995CC00694803 /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CA06D2AE995CC00694803 /* Unsplash.swift */; };
 		FA2CA0712AE9AB7E00694803 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FA2CA0702AE9AB7E00694803 /* Realm */; };
 		FA2CA0732AE9AB7E00694803 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA2CA0722AE9AB7E00694803 /* RealmSwift */; };
+		FA38D1DC2AF8F94000C48505 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D1DB2AF8F94000C48505 /* MainCollectionViewCell.swift */; };
+		FA38D1DE2AF8FC2800C48505 /* UIImageView-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D1DD2AF8FC2800C48505 /* UIImageView-ext.swift */; };
+		FA38D1E02AF8FD6900C48505 /* UIMainCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D1DF2AF8FD6900C48505 /* UIMainCollectionController.swift */; };
 		FA40D4C02ADA732400C89E65 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40D4BF2ADA732400C89E65 /* Network.swift */; };
 		FA4E99B92AD5A25F00E09670 /* AVKitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */; };
 		FA4E99BB2AD5AB5200E09670 /* UIChooseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */; };
@@ -55,8 +60,13 @@
 		E8B1344884D87E32737AB2E7 /* Pods-LearnWords-Nikita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnWords-Nikita.debug.xcconfig"; path = "Target Support Files/Pods-LearnWords-Nikita/Pods-LearnWords-Nikita.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0745952AEC4737008699FF /* RealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealManager.swift; sourceTree = "<group>"; };
 		FA0963572AD427CB00909D62 /* UIColor-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-ext.swift"; sourceTree = "<group>"; };
+		FA15DEC62AF7979E00AB2798 /* Unsplash-Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unsplash-Network.swift"; sourceTree = "<group>"; };
+		FA15DEC82AF79A3B00AB2798 /* ResultNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultNetwork.swift; sourceTree = "<group>"; };
 		FA2CA06B2AE994A200694803 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		FA2CA06D2AE995CC00694803 /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
+		FA38D1DB2AF8F94000C48505 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA38D1DD2AF8FC2800C48505 /* UIImageView-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView-ext.swift"; sourceTree = "<group>"; };
+		FA38D1DF2AF8FD6900C48505 /* UIMainCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainCollectionController.swift; sourceTree = "<group>"; };
 		FA40D4BF2ADA732400C89E65 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FA4E99B82AD5A25F00E09670 /* AVKitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVKitProtocol.swift; sourceTree = "<group>"; };
 		FA4E99BA2AD5AB5200E09670 /* UIChooseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseImageView.swift; sourceTree = "<group>"; };
@@ -145,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				FAFFB1E92AEFB611009DC689 /* Setup */,
-				FA40D4BF2ADA732400C89E65 /* Network.swift */,
+				FA15DEC62AF7979E00AB2798 /* Unsplash-Network.swift */,
 			);
 			path = Newwork;
 			sourceTree = "<group>";
@@ -224,6 +234,7 @@
 				FAB0E7BE2AD6978F004EBC07 /* UITableView-ext.swift */,
 				FAB0E7C02AD69829004EBC07 /* UICollectionView-ext.swift */,
 				FAE926C52AEACF5600662D73 /* UITextField-ext.swift */,
+				FA38D1DD2AF8FC2800C48505 /* UIImageView-ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -261,6 +272,7 @@
 				FAE498D22AC57150004A8DF6 /* UIMainViewController.swift */,
 				FAE498DA2AC57EBF004A8DF6 /* NewWordViewContoller.swift */,
 				FA4E99BE2AD5BA4300E09670 /* UIPhotosViewController.swift */,
+				FA38D1DF2AF8FD6900C48505 /* UIMainCollectionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +282,7 @@
 			children = (
 				FAE498D52AC57AA7004A8DF6 /* MainTableViewCell.swift */,
 				FAB0E7BA2AD69510004EBC07 /* UIImageCollectionViewCell.swift */,
+				FA38D1DB2AF8F94000C48505 /* MainCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -286,8 +299,10 @@
 		FAFFB1E92AEFB611009DC689 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				FA40D4BF2ADA732400C89E65 /* Network.swift */,
 				FAFFB1EA2AEFB61B009DC689 /* Api.swift */,
 				FAFFB1EC2AEFBBC9009DC689 /* NetworkError.swift */,
+				FA15DEC82AF79A3B00AB2798 /* ResultNetwork.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -423,6 +438,8 @@
 				FAFFB1F32AEFBC55009DC689 /* NewWordDelegate.swift in Sources */,
 				FAD5D0382AC619B0002A3B19 /* UIView-ext.swift in Sources */,
 				FA692A0F2AC072E200293B99 /* SceneDelegate.swift in Sources */,
+				FA15DEC72AF7979E00AB2798 /* Unsplash-Network.swift in Sources */,
+				FA38D1DC2AF8F94000C48505 /* MainCollectionViewCell.swift in Sources */,
 				FAE3E7942AD2C5CA006B8AFD /* LanguageAndVoice.swift in Sources */,
 				FA0963582AD427CB00909D62 /* UIColor-ext.swift in Sources */,
 				FAE498D32AC57150004A8DF6 /* UIMainViewController.swift in Sources */,
@@ -437,6 +454,9 @@
 				FAE41E142AD01DBF00EAAF4A /* UIButton-ext.swift in Sources */,
 				FAFFB1EB2AEFB61B009DC689 /* Api.swift in Sources */,
 				FA655F342ACF4D4100799B83 /* UIEditWordTextField.swift in Sources */,
+				FA15DEC92AF79A3B00AB2798 /* ResultNetwork.swift in Sources */,
+				FA38D1DE2AF8FC2800C48505 /* UIImageView-ext.swift in Sources */,
+				FA38D1E02AF8FD6900C48505 /* UIMainCollectionController.swift in Sources */,
 				FAB0E7BB2AD69510004EBC07 /* UIImageCollectionViewCell.swift in Sources */,
 				FAFFB1F12AEFBC1D009DC689 /* SearchViewDelegate.swift in Sources */,
 				FA0745962AEC4737008699FF /* RealManager.swift in Sources */,
