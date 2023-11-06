@@ -9,7 +9,7 @@ import UIKit
 
 extension UICollectionView {
     
-    convenience init(backgroundColor: UIColor? = .clear, frame: CGRect, spacing: CGFloat) {
+    convenience init(backgroundColor: UIColor? = .clear, frame: CGRect? = .zero, spacing: CGFloat) {
         
         
         let layout = UICollectionViewFlowLayout()
@@ -18,7 +18,9 @@ extension UICollectionView {
         layout.scrollDirection = .vertical
         layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
         
-        self.init(frame: frame, collectionViewLayout: layout)
+        self.init(frame: frame!, collectionViewLayout: layout)
         self.backgroundColor = backgroundColor
+        
+        
     }
 }

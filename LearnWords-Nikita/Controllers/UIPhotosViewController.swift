@@ -10,64 +10,54 @@ import SDWebImage
 
 class UIPhotosViewController: ViewController {
     
-    
-    private let searchView = SearchView()
-    
     private var imagesUnspalsh: Unsplash?
-    
+  
     weak var delegate: UIPhotosViewControllerProtocol?
     
     private let spacing = 5.0
     
     private lazy var collectionView = UICollectionView(backgroundColor: .clear, frame: view.bounds, spacing: 5)
     
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(UIImageCollectionViewCell.self, forCellWithReuseIdentifier: UIImageCollectionViewCell.identifier)
+        setupSearchController()
         initialize()
         setupView()
-        setupSearch()
-    }
-    
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     func initialize() {
-        view.addSubViews(collectionView, searchView)
+        view.addSubViews(collectionView)
 
     }
     
-    func setupView() {
+    private func setupSearchController() {
+        
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск изображений"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+    }
+    
+    private func setupView() {
         
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        collectionView.register(UIImageCollectionViewCell.self, forCellWithReuseIdentifier: UIImageCollectionViewCell.identifier)
-        
         NSLayoutConstraint.activate([
-
             
-            collectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 20),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
     
-    func setupSearch() {
-        searchView.delegate = self
-        NSLayoutConstraint.activate([
-                searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-                searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-                searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                searchView.heightAnchor.constraint(equalToConstant: 40)
-        ])
 
-    }
     
 }
 
@@ -78,7 +68,8 @@ extension UIPhotosViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UIImageCollectionViewCell.identifier, for: indexPath) as? UIImageCollectionViewCell else { return UIImageCollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UIImageCollectionViewCell.identifier, for: indexPath) as? UIImageCollectionViewCell else { return UIImageCollectionViewCell()
+        }
         
         let value = imagesUnspalsh?.results[indexPath.row].urls
         if let text = value?.regular, let url = URL(string: text) {
@@ -124,15 +115,27 @@ extension UIPhotosViewController {
     }
 }
 
-extension UIPhotosViewController: SearchViewDelegate {
-   func didPressSearchButton(text: String?) {
-        downloadPhotos(searchText: text)
+
+// Расширение для обработки  поиска
+extension UIPhotosViewController: UISearchBarDelegate {
+    // Вызывается, когда текст изменяется
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        downloadPhotos(searchText: searchText)
     }
     
-
-    
-    
+    // Вызывается, когда пользователь нажимает кнопку
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let searchText = searchBar.text {
+            downloadPhotos(searchText: searchText)
+        }
+    }
 }
+
+
+
+
+
 
 
 //MARK: - SwiftUI

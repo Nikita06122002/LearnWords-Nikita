@@ -39,12 +39,14 @@ class AddMainCollectionViewCell: UICollectionViewCell {
             label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             label.heightAnchor.constraint(equalToConstant: 16),
             label.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 12),
-            label.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -13)
+            label.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -13)
         ])
     }
+    
     
     func addTarget(_ target: Any, action: Selector) {
         button.addTarget(target, action: action, for: .touchUpInside)
     }
     
 }
+
