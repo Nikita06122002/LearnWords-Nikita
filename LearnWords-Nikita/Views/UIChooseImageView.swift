@@ -48,7 +48,7 @@ class UIChooseImageView: UIView {
     private func setupChooseImageContentView(imageName: String, buttonTitle: String) -> UIView {
         let view = UIView()
         let redImageView = UIImageView(image: UIImage(named: imageName))
-        let label = UILabel(text: buttonTitle, font: .systemFont(ofSize: 15), textColor: .custom.gray)
+        let label = UILabel(text: buttonTitle, font: .montserrat(ofSize: 15, weight: .medium), textColor: .custom.gray)
         view.backgroundColor = .clear
         
         view.addSubViews(redImageView, label)

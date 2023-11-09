@@ -16,9 +16,12 @@ class UIPhotosViewController: ViewController {
     
     private let spacing = 5.0
     
+    
     private lazy var collectionView = UICollectionView(backgroundColor: .clear, frame: view.bounds, spacing: 5)
     
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    let search = UISearchController(searchResultsController: nil)
     
     
     override func viewDidLoad() {
@@ -27,30 +30,36 @@ class UIPhotosViewController: ViewController {
         setupSearchController()
         initialize()
         setupView()
+        
+        navigationItem.searchController = search
+        
     }
+    
+
     
     func initialize() {
         view.addSubViews(collectionView)
 
     }
     
+    
     private func setupSearchController() {
         
-        searchController.searchBar.delegate = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Поиск изображений"
+        search.searchBar.delegate = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Поиск изображений"
         navigationItem.searchController = searchController
         definesPresentationContext = false
     }
     
     private func setupView() {
-        
+        collectionView.backgroundColor = .red
         collectionView.dataSource = self
         collectionView.delegate = self
         
         NSLayoutConstraint.activate([
             
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)

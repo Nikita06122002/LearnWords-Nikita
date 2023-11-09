@@ -10,8 +10,8 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell {
     
     private let image = UIImageView()
-    private let titleLabel = UILabel(font: .boldSystemFont(ofSize: 16))
-    private let translateLabel = UILabel(font: .systemFont(ofSize: 13))
+    private let titleLabel = UILabel(font: .montserrat(ofSize: 16, weight: .bold))
+    private let translateLabel = UILabel(font: .montserrat(ofSize: 13, weight: .medium))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

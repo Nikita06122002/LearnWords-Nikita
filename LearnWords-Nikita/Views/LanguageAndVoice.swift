@@ -34,9 +34,9 @@ final class LanguageAndVoice: UIView {
 
     private func setupLanguageContentView(buttonTitle: String, languageLabel: String, buttonImage: String) {
         
-        let englishLabel = UILabel(text: "Английский", font: .systemFont(ofSize: 13), textColor: .orange)
+        let englishLabel = UILabel(text: "Английский", font: .montserrat(ofSize: 13, weight: .medium), textColor: .orange)
         let transitButton = UIButton(setImage: UIImage(named: buttonImage))
-        let languageLabel = UILabel(text: languageLabel, font: .boldSystemFont(ofSize: 16))
+        let languageLabel = UILabel(text: languageLabel, font: .montserrat(ofSize: 16, weight: .semiBoidItalic))
         self.backgroundColor = .clear
         
         self.addSubViews(englishLabel, transitButton, languageLabel)
@@ -58,7 +58,7 @@ final class LanguageAndVoice: UIView {
     }
     //MARK: - Контентвью для воспроизведения слов голосом
     private func setupPlayContentView(title: String, buttonImage: String, action: Selector) {
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .custom.black)
+        let label = UILabel(text: title, font: .montserrat(ofSize: 16, weight: .semiBoidItalic), textColor: .custom.black)
         button.setImage(UIImage(named: buttonImage), for: .normal)
         let lineView = UIView(color: .custom.gray)
         self.backgroundColor = .clear

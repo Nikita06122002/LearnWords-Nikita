@@ -37,9 +37,9 @@ final class UIEditWordTextField: UIView {
     private func setupContentView(title: String, description: String) {
         
         
-        let label = UILabel(text: title, font: .boldSystemFont(ofSize: 16), textColor: .custom.black)
+        let label = UILabel(text: title, font: .montserrat(ofSize: 16, weight: .semiBoidItalic), textColor: .custom.black)
         
-        let descriptionLabel = UILabel(text: description, font: .boldSystemFont(ofSize: 10), textColor: .custom.gray)
+        let descriptionLabel = UILabel(text: description, font: .montserrat(ofSize: 10, weight: .regular), textColor: .custom.gray)
         
         let lineView = UIView(color: .custom.gray)
         

@@ -21,7 +21,7 @@ class AddMainCollectionViewCell: UICollectionViewCell {
     }
     
     private let button = UIButton(setImage: UIImage(named: "plus"))
-    private let label = UILabel(text: "Новое слово", font: .systemFont(ofSize: 14))
+    private let label = UILabel(text: "Новое слово", font: .montserrat(ofSize: 14, weight: .bold))
     
     private func setupView() {
         
